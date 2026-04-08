@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace MotorcycleShopMVC.Models;
 
@@ -47,6 +48,9 @@ public partial class Motorcycle
     [StringLength(255)]
     [Unicode(false)]
     public string? ImageUrl { get; set; }
+
+    [NotMapped]
+    public IFormFile? ImageFile { get; set; }
 
     [Column("description")]
     public string? Description { get; set; }

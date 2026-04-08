@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MotorcycleShopMVC.Models;
+using System.IO;
 
 namespace MotorcycleShopMVC.Controllers
 {
@@ -54,18 +55,31 @@ namespace MotorcycleShopMVC.Controllers
         }
 
         // POST: Motorcycles/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MotorcycleId,ModelName,BrandId,TypeId,EngineCapacity,YearFrom,YearTo,Price,Color,WarrantyPolicy,ImageUrl,Description,StockQty")] Motorcycle motorcycle)
+        public async Task<IActionResult> Create(Motorcycle motorcycle)
         {
+            if (motorcycle.ImageFile != null)
+            {
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(motorcycle.ImageFile.FileName);
+
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await motorcycle.ImageFile.CopyToAsync(stream);
+                }
+
+                motorcycle.ImageUrl = "/images/" + fileName;
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(motorcycle);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandId", motorcycle.BrandId);
             ViewData["TypeId"] = new SelectList(_context.VehicleTypes, "TypeId", "TypeId", motorcycle.TypeId);
             return View(motorcycle);
@@ -90,15 +104,36 @@ namespace MotorcycleShopMVC.Controllers
         }
 
         // POST: Motorcycles/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MotorcycleId,ModelName,BrandId,TypeId,EngineCapacity,YearFrom,YearTo,Price,Color,WarrantyPolicy,ImageUrl,Description,StockQty")] Motorcycle motorcycle)
+        public async Task<IActionResult> Edit(int id, Motorcycle motorcycle)
         {
             if (id != motorcycle.MotorcycleId)
             {
                 return NotFound();
+            }
+
+            // Giữ ảnh cũ nếu không upload mới
+            if (motorcycle.ImageFile == null)
+            {
+                var oldData = await _context.Motorcycles.AsNoTracking()
+                    .FirstOrDefaultAsync(m => m.MotorcycleId == id);
+
+                motorcycle.ImageUrl = oldData?.ImageUrl;
+            }
+            else
+            {
+                // Upload ảnh mới
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(motorcycle.ImageFile.FileName);
+
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await motorcycle.ImageFile.CopyToAsync(stream);
+                }
+
+                motorcycle.ImageUrl = "/images/" + fileName;
             }
 
             if (ModelState.IsValid)
@@ -121,6 +156,7 @@ namespace MotorcycleShopMVC.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandId", motorcycle.BrandId);
             ViewData["TypeId"] = new SelectList(_context.VehicleTypes, "TypeId", "TypeId", motorcycle.TypeId);
             return View(motorcycle);

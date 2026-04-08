@@ -254,3 +254,4 @@ E:\Program Files\MotorcycleShopMVC\obj\Debug\net8.0\MotorcycleShopMVC.pdb
 E:\Program Files\MotorcycleShopMVC\obj\Debug\net8.0\MotorcycleShopMVC.genruntimeconfig.cache
 E:\Program Files\MotorcycleShopMVC\obj\Debug\net8.0\ref\MotorcycleShopMVC.dll
 E:\Program Files\MotorcycleShopMVC\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+E:\Program Files\MotorcycleShopMVC\obj\Debug\net8.0\MotorcycleShopMVC.sourcelink.json

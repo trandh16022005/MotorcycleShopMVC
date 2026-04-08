@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MotorcycleShopMVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb67b57ff54c8f7b23591ec0d3f251a60a09cad3")]
 [assembly: System.Reflection.AssemblyProductAttribute("MotorcycleShopMVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MotorcycleShopMVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
