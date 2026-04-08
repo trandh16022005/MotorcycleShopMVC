@@ -61,7 +61,9 @@ namespace MotorcycleShopMVC.Controllers
         {
             if (motorcycle.ImageFile != null)
             {
-                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(motorcycle.ImageFile.FileName);
+                var fileName = motorcycle.BrandId + "_"
+             + Guid.NewGuid().ToString()
+             + Path.GetExtension(motorcycle.ImageFile.FileName);
 
                 var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
 
@@ -124,7 +126,9 @@ namespace MotorcycleShopMVC.Controllers
             else
             {
                 // Upload ảnh mới
-                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(motorcycle.ImageFile.FileName);
+                var fileName = motorcycle.BrandId + "_"
+             + Guid.NewGuid().ToString()
+             + Path.GetExtension(motorcycle.ImageFile.FileName);
 
                 var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
 

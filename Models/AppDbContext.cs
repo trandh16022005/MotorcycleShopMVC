@@ -56,6 +56,19 @@ public partial class AppDbContext : DbContext
             entity.HasKey(e => e.BrandId).HasName("PK__brand__5E5A8E27A5BB9874");
         });
 
+        modelBuilder.Entity<Brand>().HasData(
+    new Brand { BrandId = 1, BrandName = "Honda", Country = "Japan" },
+    new Brand { BrandId = 2, BrandName = "Yamaha", Country = "Japan" },
+    new Brand { BrandId = 3, BrandName = "Piaggio", Country = "Italy" },
+    new Brand { BrandId = 4, BrandName = "Suzuki", Country = "Japan" },
+    new Brand { BrandId = 5, BrandName = "SYM", Country = "Taiwan" },
+    new Brand { BrandId = 6, BrandName = "Kymco", Country = "Taiwan" },
+    new Brand { BrandId = 7, BrandName = "Kawasaki", Country = "Japan" },
+    new Brand { BrandId = 8, BrandName = "Detech", Country = "Vietnam" },
+    new Brand { BrandId = 9, BrandName = "Halim", Country = "Vietnam" },
+    new Brand { BrandId = 10, BrandName = "Daelim", Country = "South Korea" }
+);
+
         modelBuilder.Entity<Cart>(entity =>
         {
             entity.HasKey(e => e.CartId).HasName("PK__cart__2EF52A270BAE5CCE");

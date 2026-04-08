@@ -1,0 +1,17 @@
+﻿@model MotorcycleShopMVC.Models.Brand
+
+<h2>Create Brand</h2>
+
+<form asp-action="Create">
+    <div>
+        <label>Brand Name</label>
+        <input asp-for="BrandName" />
+    </div>
+
+    <div>
+        <label>Country</label>
+        <input asp-for="Country" />
+    </div>
+
+    <button type="submit">Create</button>
+</form>

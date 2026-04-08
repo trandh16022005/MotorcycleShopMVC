@@ -1,0 +1,16 @@
+﻿@model IEnumerable<MotorcycleShopMVC.Models.Brand>
+
+<h2>Brand List</h2>
+
+<a asp-action="Create">Add New</a>
+
+<table>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.BrandId</td>
+            <td>@item.BrandName</td>
+            <td>@item.Country</td>
+        </tr>
+    }
+</table>
