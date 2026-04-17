@@ -1,8 +1,59 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<MotorcycleShopMVC.Models.Motorcycle>
+
+@{
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- 🔥 BANNER -->
+<div class="bg-dark text-white p-5 text-center mb-4">
+    <h1>Motorcycle Shop</h1>
+    <p>Mua xe dễ dàng - Giá tốt - Nhiều lựa chọn</p>
+</div>
+
+<!-- 🔥 FILTER BRAND -->
+<div class="mb-4">
+    <h4>Hãng xe</h4>
+    <div>
+        <a class="btn btn-outline-primary @(ViewBag.SelectedBrand == null ? "active" : "")"
+           href="/">All</a>
+
+        @foreach (var b in ViewBag.Brands)
+        {
+            <a class="btn btn-outline-primary @(ViewBag.SelectedBrand == b.BrandId ? "active" : "")"
+                   href="/?brandId=@b.BrandId">
+                @b.BrandName
+            </a>
+        }
+    </div>
+</div>
+
+<!-- 🔥 PRODUCT GRID -->
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 shadow-sm">
+
+                <img src="~/@item.ImagePath"
+                     class="card-img-top"
+                     style="height:200px; object-fit:cover;" />
+
+                <div class="card-body">
+                    <h5>@item.ModelName</h5>
+                    <p class="text-muted">@item.Brand.BrandName</p>
+                    <h6 class="text-danger">
+                        @item.Price.ToString("N0") VNĐ
+                    </h6>
+                </div>
+
+                <div class="card-footer text-center">
+                    <a href="/Motorcycle/Details/@item.MotorcycleId"
+                           class="btn btn-primary btn-sm">
+                        Xem chi tiết
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    }
 </div>
