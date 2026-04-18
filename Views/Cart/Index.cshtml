@@ -1,7 +1,8 @@
-﻿@model IEnumerable<MotorcycleShopMVC.Models.CartItem>
+﻿
+@model IEnumerable<MotorcycleShopMVC.Models.CartItem>
 
 @{
-    ViewData["Title"] = "Cart";
+    ViewData["Title"] = "Giỏ hàng";
     decimal total = 0;
 }
 
@@ -13,13 +14,13 @@
 }
 else
 {
-    <table class="table">
+    <table class="table table-bordered align-middle">
         <thead>
             <tr>
                 <th>Sản phẩm</th>
                 <th>Loại</th>
                 <th>Đơn giá</th>
-                <th>Số lượng</th>
+                <th style="width:200px;">Số lượng</th>
                 <th>Thành tiền</th>
             </tr>
         </thead>
@@ -34,8 +35,51 @@ else
                     <td>@(item.Motorcycle?.ModelName ?? item.Part?.PartName)</td>
                     <td>@(item.Motorcycle != null ? "Motorcycle" : "Part")</td>
                     <td>@price.ToString("N0")</td>
-                    <td>@item.Quantity</td>
+
+                    <td>
+                        <div class="d-flex align-items-center gap-2">
+                            <form asp-controller="Cart" asp-action="DecreaseQuantity" method="post" style="display:inline;">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="cartItemId" value="@item.CartItemId" />
+                                <button type="submit" class="btn btn-sm btn-outline-secondary">-</button>
+                            </form>
+
+                            <span><strong>@item.Quantity</strong></span>
+
+                            <form asp-controller="Cart" asp-action="IncreaseQuantity" method="post" style="display:inline;">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="cartItemId" value="@item.CartItemId" />
+                                <button type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+                            </form>
+                        </div>
+                    </td>
+
                     <td>@lineTotal.ToString("N0")</td>
+
+                    <td>
+                        @if (item.MotorcycleId != null)
+                        {
+                            <a asp-controller="Motorcycle"
+                                   asp-action="Details"
+                                   asp-route-id="@item.MotorcycleId"
+                                   class="btn btn-sm btn-info text-white">
+                                Xem chi tiết
+                            </a>
+                        }
+                        else if (item.PartId != null)
+                        {
+                            <span class="text-muted">Part chưa có trang chi tiết</span>
+                        }
+
+                        <form asp-controller="Cart" asp-action="RemoveItem" method="post" style="display:inline;">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="cartItemId" value="@item.CartItemId" />
+                            <button type="submit" class="btn btn-sm btn-danger"
+                                    onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này khỏi giỏ?');">
+                                Xóa
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             }
         </tbody>
