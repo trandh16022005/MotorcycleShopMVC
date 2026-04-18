@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Code\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj": {}
+    "C:\\Users\\Administrator\\source\\repos\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj": {}
   },
   "projects": {
-    "E:\\Code\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj": {
+    "C:\\Users\\Administrator\\source\\repos\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Code\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj",
         "projectName": "MotorcycleShopMVC",
-        "projectPath": "E:\\Code\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj",
-        "packagesPath": "C:\\Users\\ASUS TUF GAMING\\.nuget\\packages\\",
-        "outputPath": "E:\\Code\\MotorcycleShopMVC\\obj\\",
+        "projectPath": "C:\\Users\\Administrator\\source\\repos\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Administrator\\source\\repos\\MotorcycleShopMVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ASUS TUF GAMING\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -30,6 +30,7 @@
         },
         "frameworks": {
           "net8.0": {
+            "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {}
           }
@@ -47,6 +48,7 @@
       },
       "frameworks": {
         "net8.0": {
+          "framework": "net8.0",
           "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore.Design": {
@@ -89,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.420/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
