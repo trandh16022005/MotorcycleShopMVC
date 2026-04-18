@@ -1,113 +1,127 @@
-@model IEnumerable<MotorcycleShopMVC.Models.Motorcycle>
+﻿@model PaginatedList<MotorcycleShopMVC.Models.Motorcycle>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Danh sách xe";
 }
 
-<h1>Index</h1>
+<h1>@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Thêm xe mới</a>
 </p>
-<table class="table">
-    <thead>
+
+@* FORM LỌC VÀ TÌM KIẾM *@
+<form asp-action="Index" method="get">
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Tìm theo tên xe..." />
+        </div>
+        <div class="col-md-2">
+            <select name="brandId" asp-items="@(ViewData["BrandId"] as SelectList)" class="form-control">
+                <option value="">Tất cả hãng</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select name="typeId" asp-items="@(ViewData["TypeId"] as SelectList)" class="form-control">
+                <option value="">Tất cả loại xe</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select name="yearFrom" asp-items="@(ViewData["YearFrom"] as SelectList)" class="form-control">
+                <option value="">Tất cả các năm</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <select name="priceRange" asp-items="@(ViewData["PriceRanges"] as SelectList)" class="form-control">
+                <option value="">Tất cả các mức giá</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <select name="engineRange" asp-items="@(ViewData["EngineRanges"] as SelectList)" class="form-control">
+                <option value="">Tất cả dung tích</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <input type="submit" value="Tìm kiếm" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-secondary ms-2">Reset</a>
+        </div>
+    </div>
+</form>
+
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ModelName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EngineCapacity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.YearFrom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.YearTo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Color)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WarrantyPolicy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagePath)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StockQty)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Brand)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
+            <th>Hình ảnh</th>
+            <th>Tên xe</th>
+            <th>Hãng</th>
+            <th>Loại xe</th>
+            <th>Giá</th>
+            <th>Năm sản xuất</th>
+            <th>Tồn kho</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModelName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EngineCapacity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.YearFrom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.YearTo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WarrantyPolicy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImagePath)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StockQty)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand.BrandId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type.TypeId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MotorcycleId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MotorcycleId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MotorcycleId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center">
+                    @if (!string.IsNullOrEmpty(item.ImagePath))
+                    {
+                        <img src="@Url.Content("~/" + item.ImagePath)" alt="Hình xe @item.ModelName" style="width: 120px; height: auto; object-fit: cover;" />
+                    }
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.ModelName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Brand.BrandName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Type.TypeName)</td>
+                <td>@item.Price.ToString("N0") VNĐ</td>
+                <td>@Html.DisplayFor(modelItem => item.YearFrom)</td>
+                <td>@Html.DisplayFor(modelItem => item.StockQty)</td>
+                <td class="text-center" style="min-width: 130px;">
+                    <a asp-action="Edit" asp-route-id="@item.MotorcycleId" class="btn btn-sm btn-info">Sửa</a> |
+                    <a asp-action="Details" asp-route-id="@item.MotorcycleId" class="btn btn-sm btn-secondary">Chi tiết</a> |
+                    <a asp-action="Delete" asp-route-id="@item.MotorcycleId" class="btn btn-sm btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@* PHÂN TRANG *@
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+
+    // Giữ lại tất cả các tham số filter khi chuyển trang
+    var routeData = new Dictionary<string, string>
+    {
+        { "searchString", ViewData["CurrentFilter"]?.ToString() },
+        { "brandId", ViewData["CurrentBrandId"]?.ToString() },
+        { "typeId", ViewData["CurrentTypeId"]?.ToString() },
+        { "yearFrom", ViewData["CurrentYearFrom"]?.ToString() },
+        { "priceRange", ViewData["CurrentPriceRange"]?.ToString() },
+        { "engineRange", ViewData["CurrentEngineRange"]?.ToString() }
+    };
+}
+
+<div class="d-flex justify-content-center">
+    <nav>
+        <ul class="pagination">
+            <li class="page-item @prevDisabled">
+                <a class="page-link" asp-action="Index" asp-all-route-data="@routeData" asp-route-pageNumber="@(Model.PageIndex - 1)">Trang trước</a>
+            </li>
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                    <a class="page-link" asp-action="Index" asp-all-route-data="@routeData" asp-route-pageNumber="@i">@i</a>
+                </li>
+            }
+            <li class="page-item @nextDisabled">
+                <a class="page-link" asp-action="Index" asp-all-route-data="@routeData" asp-route-pageNumber="@(Model.PageIndex + 1)">Trang sau</a>
+            </li>
+        </ul>
+    </nav>
+</div>
