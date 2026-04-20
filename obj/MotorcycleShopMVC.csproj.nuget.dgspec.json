@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Code\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj": {}
+    "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj": {}
   },
   "projects": {
-    "E:\\Code\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj": {
+    "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Code\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj",
+        "projectUniqueName": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj",
         "projectName": "MotorcycleShopMVC",
-        "projectPath": "E:\\Code\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj",
-        "packagesPath": "C:\\Users\\ASUS TUF GAMING\\.nuget\\packages\\",
-        "outputPath": "E:\\Code\\MotorcycleShopMVC\\obj\\",
+        "projectPath": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj",
+        "packagesPath": "C:\\Users\\MINH HIEN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ASUS TUF GAMING\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MINH HIEN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -43,7 +43,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -89,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
