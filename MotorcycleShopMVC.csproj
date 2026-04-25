@@ -14,6 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include=".vs\MotorcycleShopMVC.slnx\v18\DocumentLayout.backup.json" />
+    <Content Include=".vs\MotorcycleShopMVC.slnx\v18\DocumentLayout.json" />
     <Content Include="bin\Debug\net8.0\appsettings.Development.json" />
     <Content Include="bin\Debug\net8.0\appsettings.json" />
     <Content Include="bin\Debug\net8.0\global.json" />
@@ -34,6 +36,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include=".vs\MotorcycleShopMVC.slnx\config\applicationhost.config" />
+    <None Include=".vs\MotorcycleShopMVC.slnx\FileContentIndex\249384e7-5efd-456d-8160-1e7eb35229bc.vsidx" />
+    <None Include=".vs\MotorcycleShopMVC.slnx\FileContentIndex\2a814c97-8aac-4b70-a4cd-0dc9f1694c29.vsidx" />
+    <None Include=".vs\MotorcycleShopMVC.slnx\FileContentIndex\b467f07c-3624-479c-93fb-74af515c7212.vsidx" />
+    <None Include=".vs\MotorcycleShopMVC.slnx\v18\.futdcache.v2" />
+    <None Include=".vs\MotorcycleShopMVC.slnx\v18\.suo" />
+    <None Include=".vs\MotorcycleShopMVC.slnx\v18\fileList.bin" />
     <None Include="bin\Debug\net8.0\af\Humanizer.resources.dll" />
     <None Include="bin\Debug\net8.0\ar\Humanizer.resources.dll" />
     <None Include="bin\Debug\net8.0\Azure.Core.dll" />
@@ -293,6 +302,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include=".vs\ProjectEvaluation\" />
   </ItemGroup>
 
 </Project>

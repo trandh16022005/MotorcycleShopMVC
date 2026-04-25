@@ -7698,23 +7698,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\MINH HIEN\\.nuget\\packages\\": {},
+    "C:\\Users\\ASUS TUF GAMING\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj",
+      "projectUniqueName": "E:\\Code\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj",
       "projectName": "MotorcycleShopMVC",
-      "projectPath": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj",
-      "packagesPath": "C:\\Users\\MINH HIEN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\obj\\",
+      "projectPath": "E:\\Code\\MotorcycleShopMVC\\MotorcycleShopMVC.csproj",
+      "packagesPath": "C:\\Users\\ASUS TUF GAMING\\.nuget\\packages\\",
+      "outputPath": "E:\\Code\\MotorcycleShopMVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\MINH HIEN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ASUS TUF GAMING\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

@@ -1,139 +1,146 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\",
+  "WorkspaceRootPath": "E:\\Code\\MotorcycleShopMVC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\views\\parts\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\parts\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\views\\parts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\parts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\views\\motorcycle\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\motorcycle\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\controllers\\motorcyclecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:controllers\\motorcyclecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\models\\paginatedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\paginatedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\controllers\\partscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:controllers\\partscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\models\\motorcycle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\motorcycle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\views\\motorcycle\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\motorcycle\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Code\\MotorcycleShopMVC\\obj\\Debug\\net8.0\\MotorcycleShopMVC.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Code\\MotorcycleShopMVC\\obj\\Debug\\net8.0\\MotorcycleShopMVC.csproj.FileListAbsolute.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Code\\MotorcycleShopMVC\\obj\\Debug\\net8.0\\MotorcycleShopMVC.csproj.CoreCompileInputs.cache||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\views\\motorcycle\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\motorcycle\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\views\\motorcycle\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\motorcycle\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\views\\motorcycle\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\motorcycle\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\models\\promotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\promotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\models\\part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\models\\vehicletype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\vehicletype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\models\\reviewimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\reviewimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\models\\wishlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\wishlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|c:\\users\\minh hien\\source\\repos\\motorcycleshopmvc\\models\\brand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\models\\brand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\brand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\views\\parts\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\parts\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\views\\parts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\parts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\views\\motorcycle\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\motorcycle\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\controllers\\motorcyclecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:controllers\\motorcyclecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\models\\paginatedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\paginatedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\controllers\\partscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:controllers\\partscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\models\\motorcycle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\motorcycle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\views\\motorcycle\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\motorcycle\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\views\\motorcycle\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\motorcycle\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\views\\motorcycle\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\motorcycle\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\views\\motorcycle\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\motorcycle\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\models\\promotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\promotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\models\\part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\models\\vehicletype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\vehicletype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\models\\reviewimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\reviewimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\models\\wishlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\wishlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\obj\\debug\\net8.0\\motorcycleshopmvc.csproj.filelistabsolute.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:obj\\debug\\net8.0\\motorcycleshopmvc.csproj.filelistabsolute.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\obj\\debug\\net8.0\\motorcycleshopmvc.assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:obj\\debug\\net8.0\\motorcycleshopmvc.assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|e:\\code\\motorcycleshopmvc\\obj\\debug\\net8.0\\motorcycleshopmvc.csproj.corecompileinputs.cache||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{84AA8406-6D67-9283-42D8-E177DF6F8BF7}|MotorcycleShopMVC.csproj|solutionrelative:obj\\debug\\net8.0\\motorcycleshopmvc.csproj.corecompileinputs.cache||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -152,35 +159,71 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Parts\\Details.cshtml",
-              "RelativeDocumentMoniker": "Views\\Parts\\Details.cshtml",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Parts\\Details.cshtml",
-              "RelativeToolTip": "Views\\Parts\\Details.cshtml",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAADIAAABWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-20T06:37:59.478Z",
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T06:41:28.305Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-18T08:46:25.561Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Models\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Models\\ApplicationDbContext.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Models\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Models\\ApplicationDbContext.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAqwDcAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T08:46:25.577Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CartItem.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Models\\CartItem.cs",
+              "RelativeDocumentMoniker": "Models\\CartItem.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Models\\CartItem.cs",
+              "RelativeToolTip": "Models\\CartItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T08:46:25.625Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "User.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwAkAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T08:46:25.593Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PartsController.cs",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Controllers\\PartsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\PartsController.cs",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Controllers\\PartsController.cs",
-              "RelativeToolTip": "Controllers\\PartsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T06:33:17.201Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "Motorcycle.cs",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\Motorcycle.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Models\\Motorcycle.cs",
               "RelativeDocumentMoniker": "Models\\Motorcycle.cs",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\Motorcycle.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Models\\Motorcycle.cs",
               "RelativeToolTip": "Models\\Motorcycle.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAkwCsAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -188,37 +231,47 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\appsettings.json*",
-              "RelativeToolTip": "appsettings.json*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-04-18T08:46:25.561Z",
-              "EditorCaption": ""
+              "DocumentIndex": 11,
+              "Title": "PartsController.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Controllers\\PartsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PartsController.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Controllers\\PartsController.cs",
+              "RelativeToolTip": "Controllers\\PartsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T06:33:17.201Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Models\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\ApplicationDbContext.cs*",
-              "RelativeToolTip": "Models\\ApplicationDbContext.cs*",
-              "ViewState": "AgIAACgAAAAAAAAAAAAqwDEAAAA4AAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Brand.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Models\\Brand.cs",
+              "RelativeDocumentMoniker": "Models\\Brand.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Models\\Brand.cs",
+              "RelativeToolTip": "Models\\Brand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-18T08:46:25.577Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-18T08:46:25.641Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Views\\Parts\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Parts\\Details.cshtml",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Views\\Parts\\Details.cshtml",
+              "RelativeToolTip": "Views\\Parts\\Details.cshtml",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADIAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-20T06:37:59.478Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "PaginatedList.cs",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\PaginatedList.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Models\\PaginatedList.cs",
               "RelativeDocumentMoniker": "Models\\PaginatedList.cs",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\PaginatedList.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Models\\PaginatedList.cs",
               "RelativeToolTip": "Models\\PaginatedList.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -226,11 +279,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Parts\\Index.cshtml",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Views\\Parts\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Parts\\Index.cshtml",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Parts\\Index.cshtml",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Views\\Parts\\Index.cshtml",
               "RelativeToolTip": "Views\\Parts\\Index.cshtml",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -238,11 +291,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "MotorcycleController.cs",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Controllers\\MotorcycleController.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Controllers\\MotorcycleController.cs",
               "RelativeDocumentMoniker": "Controllers\\MotorcycleController.cs",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Controllers\\MotorcycleController.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Controllers\\MotorcycleController.cs",
               "RelativeToolTip": "Controllers\\MotorcycleController.cs",
               "ViewState": "AgIAALQAAAAAAAAAAAAswPMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -250,11 +303,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Motorcycle\\Details.cshtml",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Views\\Motorcycle\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\Motorcycle\\Details.cshtml",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Motorcycle\\Details.cshtml",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Views\\Motorcycle\\Details.cshtml",
               "RelativeToolTip": "Views\\Motorcycle\\Details.cshtml",
               "ViewState": "AgIAAEUAAAAAAAAAAAAUwGgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -262,11 +315,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Shared\\_Layout.cshtml",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -274,11 +327,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Home\\Index.cshtml",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Home\\Index.cshtml",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
               "ViewState": "AgIAADIAAAAAAAAAAAAowDoAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -286,11 +339,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Motorcycle\\Delete.cshtml",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Views\\Motorcycle\\Delete.cshtml",
               "RelativeDocumentMoniker": "Views\\Motorcycle\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Motorcycle\\Delete.cshtml",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Views\\Motorcycle\\Delete.cshtml",
               "RelativeToolTip": "Views\\Motorcycle\\Delete.cshtml",
               "ViewState": "AgIAADIAAAAAAAAAAIAwwDsAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -298,31 +351,35 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 32,
               "Title": "MotorcycleShopMVC.csproj.FileListAbsolute.txt",
               "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\obj\\Debug\\net8.0\\MotorcycleShopMVC.csproj.FileListAbsolute.txt",
+              "RelativeDocumentMoniker": "obj\\Debug\\net8.0\\MotorcycleShopMVC.csproj.FileListAbsolute.txt",
               "ToolTip": "E:\\Code\\MotorcycleShopMVC\\obj\\Debug\\net8.0\\MotorcycleShopMVC.csproj.FileListAbsolute.txt",
+              "RelativeToolTip": "obj\\Debug\\net8.0\\MotorcycleShopMVC.csproj.FileListAbsolute.txt",
               "ViewState": "AgIAAC0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
               "WhenOpened": "2026-04-18T08:46:25.403Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 33,
               "Title": "MotorcycleShopMVC.AssemblyInfo.cs",
               "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\obj\\Debug\\net8.0\\MotorcycleShopMVC.AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "obj\\Debug\\net8.0\\MotorcycleShopMVC.AssemblyInfo.cs",
               "ToolTip": "E:\\Code\\MotorcycleShopMVC\\obj\\Debug\\net8.0\\MotorcycleShopMVC.AssemblyInfo.cs",
+              "RelativeToolTip": "obj\\Debug\\net8.0\\MotorcycleShopMVC.AssemblyInfo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-18T08:46:25.391Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Controllers\\HomeController.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Controllers\\HomeController.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Controllers\\HomeController.cs",
               "RelativeToolTip": "Controllers\\HomeController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -330,21 +387,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 34,
               "Title": "MotorcycleShopMVC.csproj.CoreCompileInputs.cache",
               "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\obj\\Debug\\net8.0\\MotorcycleShopMVC.csproj.CoreCompileInputs.cache",
+              "RelativeDocumentMoniker": "obj\\Debug\\net8.0\\MotorcycleShopMVC.csproj.CoreCompileInputs.cache",
               "ToolTip": "E:\\Code\\MotorcycleShopMVC\\obj\\Debug\\net8.0\\MotorcycleShopMVC.csproj.CoreCompileInputs.cache",
+              "RelativeToolTip": "obj\\Debug\\net8.0\\MotorcycleShopMVC.csproj.CoreCompileInputs.cache",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002368|",
               "WhenOpened": "2026-04-18T08:46:25.418Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Privacy.cshtml",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Home\\Privacy.cshtml",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Privacy.cshtml",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Views\\Home\\Privacy.cshtml",
               "RelativeToolTip": "Views\\Home\\Privacy.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -352,11 +411,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Motorcycle\\Create.cshtml",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Views\\Motorcycle\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\Motorcycle\\Create.cshtml",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Motorcycle\\Create.cshtml",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Views\\Motorcycle\\Create.cshtml",
               "RelativeToolTip": "Views\\Motorcycle\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -364,11 +423,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Motorcycle\\Edit.cshtml",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Views\\Motorcycle\\Edit.cshtml",
               "RelativeDocumentMoniker": "Views\\Motorcycle\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Motorcycle\\Edit.cshtml",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Views\\Motorcycle\\Edit.cshtml",
               "RelativeToolTip": "Views\\Motorcycle\\Edit.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -376,11 +435,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Motorcycle\\Index.cshtml",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Views\\Motorcycle\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Motorcycle\\Index.cshtml",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\Motorcycle\\Index.cshtml",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Views\\Motorcycle\\Index.cshtml",
               "RelativeToolTip": "Views\\Motorcycle\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -388,11 +447,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\_ViewStart.cshtml",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Views\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\_ViewStart.cshtml",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Views\\_ViewStart.cshtml",
               "RelativeToolTip": "Views\\_ViewStart.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -400,11 +459,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Program.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Program.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Program.cs",
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAAACkAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -412,11 +471,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "_ViewImports.cshtml",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\_ViewImports.cshtml",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "Views\\_ViewImports.cshtml",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Views\\_ViewImports.cshtml",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Views\\_ViewImports.cshtml",
               "RelativeToolTip": "Views\\_ViewImports.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -424,11 +483,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "Review.cs",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\Review.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Models\\Review.cs",
               "RelativeDocumentMoniker": "Models\\Review.cs",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\Review.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Models\\Review.cs",
               "RelativeToolTip": "Models\\Review.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -436,11 +495,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "Promotion.cs",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\Promotion.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Models\\Promotion.cs",
               "RelativeDocumentMoniker": "Models\\Promotion.cs",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\Promotion.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Models\\Promotion.cs",
               "RelativeToolTip": "Models\\Promotion.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -448,11 +507,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "Part.cs",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\Part.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Models\\Part.cs",
               "RelativeDocumentMoniker": "Models\\Part.cs",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\Part.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Models\\Part.cs",
               "RelativeToolTip": "Models\\Part.cs",
               "ViewState": "AgIAADgAAAAAAAAAAAAmwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -460,11 +519,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "VehicleType.cs",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\VehicleType.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Models\\VehicleType.cs",
               "RelativeDocumentMoniker": "Models\\VehicleType.cs",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\VehicleType.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Models\\VehicleType.cs",
               "RelativeToolTip": "Models\\VehicleType.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -472,24 +531,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "ReviewImage.cs",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\ReviewImage.cs",
-              "RelativeDocumentMoniker": "Models\\ReviewImage.cs",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\ReviewImage.cs",
-              "RelativeToolTip": "Models\\ReviewImage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-18T08:46:25.593Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 28,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\User.cs",
-              "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\User.cs",
-              "RelativeToolTip": "Models\\User.cs",
+              "Title": "ReviewImage.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Models\\ReviewImage.cs",
+              "RelativeDocumentMoniker": "Models\\ReviewImage.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Models\\ReviewImage.cs",
+              "RelativeToolTip": "Models\\ReviewImage.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-18T08:46:25.593Z"
@@ -498,9 +545,9 @@
               "$type": "Document",
               "DocumentIndex": 29,
               "Title": "Wishlist.cs",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\Wishlist.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Models\\Wishlist.cs",
               "RelativeDocumentMoniker": "Models\\Wishlist.cs",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\Wishlist.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Models\\Wishlist.cs",
               "RelativeToolTip": "Models\\Wishlist.cs",
               "ViewState": "AgIAAB0AAAAAAAAAAAA9wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -510,9 +557,9 @@
               "$type": "Document",
               "DocumentIndex": 30,
               "Title": "OrderItem.cs",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\OrderItem.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Models\\OrderItem.cs",
               "RelativeDocumentMoniker": "Models\\OrderItem.cs",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\OrderItem.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Models\\OrderItem.cs",
               "RelativeToolTip": "Models\\OrderItem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -522,37 +569,13 @@
               "$type": "Document",
               "DocumentIndex": 31,
               "Title": "Notification.cs",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\Notification.cs",
+              "DocumentMoniker": "E:\\Code\\MotorcycleShopMVC\\Models\\Notification.cs",
               "RelativeDocumentMoniker": "Models\\Notification.cs",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\Notification.cs",
+              "ToolTip": "E:\\Code\\MotorcycleShopMVC\\Models\\Notification.cs",
               "RelativeToolTip": "Models\\Notification.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-18T08:46:25.625Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "CartItem.cs",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\CartItem.cs",
-              "RelativeDocumentMoniker": "Models\\CartItem.cs",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\CartItem.cs",
-              "RelativeToolTip": "Models\\CartItem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-18T08:46:25.625Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "Brand.cs",
-              "DocumentMoniker": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\Brand.cs",
-              "RelativeDocumentMoniker": "Models\\Brand.cs",
-              "ToolTip": "C:\\Users\\MINH HIEN\\source\\repos\\MotorcycleShopMVC\\Models\\Brand.cs",
-              "RelativeToolTip": "Models\\Brand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-18T08:46:25.641Z"
             }
           ]
         }
