@@ -82,7 +82,7 @@
                 @Html.DisplayFor(modelItem => item.WarrantyPolicy)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ImagePath)
+                    <img src="@Url.Content("~/" + item.ImagePath)" alt="Hình xe" style="max-width:120px; max-height:80px;" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
@@ -106,8 +106,50 @@
                 <a asp-action="Edit" asp-route-id="@item.MotorcycleId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.MotorcycleId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.MotorcycleId">Delete</a>
+                <form asp-controller="Cart" asp-action="AddMotorcycle" method="post" style="display:inline;">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="motorcycleId" value="@item.MotorcycleId" />
+                        <input type="hidden" name="quantity" value="1" />
+                        <button type="submit" class="btn btn-sm btn-success">Thêm vào giỏ</button>                       
+                </form>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+        function getCsrfToken() {
+            return document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+        }
+
+        async function addToCart(motorcycleId) {
+            const tokenInput = document.querySelector('form input[name="__RequestVerificationToken"]');
+            const token = tokenInput ? tokenInput.value : null;
+
+            const formData = new FormData();
+            formData.append('motorcycleId', motorcycleId);
+            formData.append('quantity', 1);
+            if (token) formData.append('__RequestVerificationToken', token);
+
+            const res = await fetch('/Cart/AddMotorcycle', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                const countEl = document.getElementById('cart-count');
+                if (countEl) countEl.innerText = data.count;
+            }
+        }
+
+        document.addEventListener('click', function (e) {
+            const btn = e.target.closest('.add-to-cart-btn');
+            if (!btn) return;
+            const id = btn.getAttribute('data-id');
+            addToCart(id);
+        });
+    </script>
+}

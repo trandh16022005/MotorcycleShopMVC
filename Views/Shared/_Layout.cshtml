@@ -34,11 +34,22 @@
                                 Motorcycles
                             </a>
                         </li>
+                        
 
                     </ul>
+                  
+                    <li class="nav-item ms-auto me-3">
+                        <a class="nav-link text-white position-relative d-inline-block pe-3"
+                               asp-controller="Cart" asp-action="Index">
+                            🛒 Giỏ hàng
+                            <span id="cart-count"
+                                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                0
+                            </span>
+                        </a>
+                    </li>
 
-                    <a class="btn btn-warning me-2">🛒 Cart</a>
-                    <a class="btn btn-outline-light">Login</a>
+                    <a class="btn btn-outline-light ms-2" asp-controller="Account" asp-action="Login">Login</a>
 
                 </div>
             </div>
@@ -59,5 +70,19 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+            async function refreshCartCount() {
+                try {
+                    const res = await fetch('/Cart/GetCartCount', { cache: 'no-store' });
+                    const count = await res.json();
+                    const el = document.getElementById('cart-count');
+                    if (el) el.textContent = count;
+                } catch (err) {
+                    console.error(err);
+                }
+            }
+            document.addEventListener('DOMContentLoaded', refreshCartCount);
+    </script>
 </body>
 </html>
