@@ -266,6 +266,7 @@
     <None Include="bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll" />
     <None Include="bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll" />
     <None Include="bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll" />
+    <None Include="MotorcycleShopMVC.slnx" />
     <None Include="obj\Debug\net8.0\apphost.exe" />
     <None Include="obj\Debug\net8.0\Motorcyc.F06C13FB.Up2Date" />
     <None Include="obj\Debug\net8.0\MotorcycleShopMVC.AssemblyInfoInputs.cache" />
@@ -305,6 +306,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include=".github\workflows\" />
     <Folder Include=".vs\ProjectEvaluation\" />
   </ItemGroup>
 

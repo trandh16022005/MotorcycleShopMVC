@@ -16,91 +16,96 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ModelName)
         </dd>
+
+        ```
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.EngineCapacity)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.EngineCapacity)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.YearFrom)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.YearFrom)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.YearTo)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.YearTo)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Price)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Price)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Color)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Color)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.WarrantyPolicy)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.WarrantyPolicy)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ImagePath)
         </dt>
         <dd class="col-sm-10">
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <img src="@Url.Content("~/" + Model.ImagePath)" alt="Hình xe" style="max-width:300px;max-height:200px;" />
-   
-=======
             <span>@Model.ImagePath</span>
             <br />
-            <img src="@Url.Content("~/" + Model.ImagePath)" alt="Hình xe" style="max-width:300px;max-height:200px;" />
->>>>>>> origin/xonguyen
-=======
-            <span>@Model.ImagePath</span>
-            <br />
-            <img src="@Url.Content("~/" + Model.ImagePath)" alt="Hình xe" style="max-width:300px;max-height:200px;" />
->>>>>>> origin/Mh
+            <img src="@Url.Content("~/" + Model.ImagePath)"
+                 alt="Hình xe"
+                 style="max-width:300px;max-height:200px;" />
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.StockQty)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.StockQty)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CreatedAt)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CreatedAt)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.UpdatedAt)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.UpdatedAt)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Brand)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Brand.BrandId)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Type)
         </dt>
@@ -108,7 +113,10 @@
             @Html.DisplayFor(model => model.Type.TypeId)
         </dd>
     </dl>
+    ```
+
 </div>
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.MotorcycleId">Edit</a> |
     <a asp-action="Index">Back to List</a>
