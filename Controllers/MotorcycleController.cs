@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MotorcycleShopMVC.Models;
+using MotorcycleShopMVC.Filters;
 
 namespace MotorcycleShopMVC.Controllers
 {
@@ -26,7 +27,7 @@ namespace MotorcycleShopMVC.Controllers
         }
 
         // GET: Motorcycle/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Detail(int? id)
         {
             if (id == null)
             {
@@ -46,6 +47,7 @@ namespace MotorcycleShopMVC.Controllers
         }
 
         // GET: Motorcycle/Create
+        [RoleAuthorize("Admin")]
         public IActionResult Create()
         {
             ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandId");
@@ -58,6 +60,7 @@ namespace MotorcycleShopMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [RoleAuthorize("Admin")]
         public async Task<IActionResult> Create([Bind("MotorcycleId,ModelName,BrandId,TypeId,EngineCapacity,YearFrom,YearTo,Price,Color,WarrantyPolicy,ImagePath,Description,StockQty,CreatedAt,UpdatedAt")] Motorcycle motorcycle)
         {
             if (ModelState.IsValid)
@@ -72,6 +75,7 @@ namespace MotorcycleShopMVC.Controllers
         }
 
         // GET: Motorcycle/Edit/5
+        [RoleAuthorize("Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -94,6 +98,7 @@ namespace MotorcycleShopMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [RoleAuthorize("Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("MotorcycleId,ModelName,BrandId,TypeId,EngineCapacity,YearFrom,YearTo,Price,Color,WarrantyPolicy,ImagePath,Description,StockQty,CreatedAt,UpdatedAt")] Motorcycle motorcycle)
         {
             if (id != motorcycle.MotorcycleId)
@@ -127,6 +132,7 @@ namespace MotorcycleShopMVC.Controllers
         }
 
         // GET: Motorcycle/Delete/5
+        [RoleAuthorize("Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -149,6 +155,7 @@ namespace MotorcycleShopMVC.Controllers
         // POST: Motorcycle/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [RoleAuthorize("Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var motorcycle = await _context.Motorcycles.FindAsync(id);

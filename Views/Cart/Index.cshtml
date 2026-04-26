@@ -60,7 +60,7 @@ else
                         @if (item.MotorcycleId != null)
                         {
                             <a asp-controller="Motorcycle"
-                                   asp-action="Details"
+                                   asp-action="Detail"
                                    asp-route-id="@item.MotorcycleId"
                                    class="btn btn-sm btn-info text-white">
                                 Xem chi tiết
@@ -68,7 +68,12 @@ else
                         }
                         else if (item.PartId != null)
                         {
-                            <span class="text-muted">Part chưa có trang chi tiết</span>
+                            <a asp-controller="Part"
+                                   asp-action="Detail"
+                                   asp-route-id="@item.PartId"
+                                   class="btn btn-sm btn-info text-white">
+                                Xem chi tiết
+                            </a>
                         }
 
                         <form asp-controller="Cart" asp-action="RemoveItem" method="post" style="display:inline;">

@@ -1,18 +1,18 @@
-@model IEnumerable<MotorcycleShopMVC.Models.Motorcycle>
+﻿@model IEnumerable<MotorcycleShopMVC.Models.Part>
 
 @{
-    ViewData["Title"] = "IndexMotorcycles";
+    ViewData["Title"] = "IndexParts";
 }
 
-<div class="motorcycles-page">
+<div class="parts-page">
     <section class="page-hero rounded-4 p-4 p-md-5 mb-4 text-white">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
             <div>
-                <h1 class="fw-bold mb-2">Motorcycle Library</h1>
-                <p class="mb-0 text-light">Discover available models and choose your perfect ride.</p>
+                <h1 class="fw-bold mb-2">Part Library</h1>
+                <p class="mb-0 text-light">Discover available parts and upgrade your perfect ride.</p>
             </div>
             <div class="hero-badge">
-                <span class="badge bg-light text-dark fs-6 px-3 py-2">Total: @Model.Count() bikes</span>
+                <span class="badge bg-light text-dark fs-6 px-3 py-2">Total: @Model.Count() parts</span>
             </div>
         </div>
     </section>
@@ -20,7 +20,7 @@
     <section class="mb-4">
         <div class="row g-2">
             <div class="col-md-6">
-                <input id="bikeSearch" class="form-control" placeholder="Search by model, brand..." />
+                <input id="partSearch" class="form-control" placeholder="Search by part name, brand..." />
             </div>
             <div class="col-md-3">
                 <select id="sortPrice" class="form-select">
@@ -28,57 +28,58 @@
                     <option value="asc">Low to High</option>
                     <option value="desc">High to Low</option>
                 </select>
-            </div>            
+            </div>
         </div>
     </section>
 
     <section>
-        <div id="bikeGrid" class="row g-4">
+        <div id="partGrid" class="row g-4">
             @foreach (var item in Model)
             {
-                <div class="col-12 col-sm-6 col-lg-4 bike-item"
-                     data-name="@item.ModelName"
+                <div class="col-12 col-sm-6 col-lg-4 part-item"
+                     data-name="@item.PartName"
                      data-brand="@(item.Brand?.BrandName)"
                      data-price="@item.Price">
-                    <div class="card h-100 border-0 shadow-sm bike-card">
-                        <img src="@item.ImagePath" class="card-img-top bike-img" alt="@item.ModelName" />
+                    <div class="card h-100 border-0 shadow-sm part-card">
+                        <img src="@item.ImagePath" class="card-img-top part-img" alt="@item.PartName" />
 
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h5 class="card-title fw-bold mb-0">@item.ModelName</h5>
-                                <span class="badge bg-primary">@item.YearFrom</span>
+                                <h5 class="card-title fw-bold mb-0">@item.PartName</h5>
+                                <span class="badge bg-primary">Part</span>
                             </div>
 
                             <p class="text-muted mb-2">Brand: <strong>@(item.Brand?.BrandName ?? "N/A")</strong></p>
 
                             <div class="small text-secondary mb-3">
-                                <div>Engine: @item.EngineCapacity cc</div>
-                                <div>Color: @item.Color</div>
-                                <div>Stock: @item.StockQty</div>
+                                <div>Category: @(item.Category?.CategoryName ?? "N/A")</div>
+                                <div>Warranty: @(item.WarrantyMonths?.ToString() ?? "N/A") months</div>
+                                <div>Stock: @item.StockQuantity</div>
                             </div>
 
                             <h5 class="text-danger fw-bold mb-3">@item.Price.ToString("N0") VND</h5>
 
                             <div class="mt-auto d-grid gap-2">
-                                <a asp-action="Detail" asp-route-id="@item.MotorcycleId" class="btn btn-primary">
-                                    Xem chi tiết
+                                <a asp-action="Detail" asp-route-id="@item.PartId" class="btn btn-primary">
+                                    View Details
                                 </a>
 
                                 @{
                                     var role = Context.Session.GetString("UserRole");
                                 }
 
-                                @if (role == "admin")
+                                @if (string.Equals(role, "Admin", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    <a asp-action="Edit" asp-route-id="@item.MotorcycleId" class="btn btn-outline-secondary btn-sm">Chỉnh sửa</a>
-                                    <a asp-action="Delete" asp-route-id="@item.MotorcycleId" class="btn btn-outline-danger btn-sm">Xóa</a>
-                                }                           
-                                <form asp-controller="Cart" asp-action="AddMotorcycle" method="post">
+                                    <a asp-action="Edit" asp-route-id="@item.PartId" class="btn btn-outline-secondary btn-sm">Edit</a>
+                                    <a asp-action="Delete" asp-route-id="@item.PartId" class="btn btn-outline-danger btn-sm">Delete</a>
+                                }
+
+                                <form asp-controller="Cart" asp-action="AddPart" method="post">
                                     @Html.AntiForgeryToken()
-                                    <input type="hidden" name="motorcycleId" value="@item.MotorcycleId" />
+                                    <input type="hidden" name="partId" value="@item.PartId" />
                                     <input type="hidden" name="quantity" value="1" />
-                                    <button type="submit" class="btn btn-success w-100">Thêm vào giỏ hàng</button>
-                                </form>                               
+                                    <button type="submit" class="btn btn-success w-100">Add to Cart</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -90,13 +91,13 @@
 
 @section Scripts {
     <script>
-        const searchInput = document.getElementById('bikeSearch');
+        const searchInput = document.getElementById('partSearch');
         const sortSelect = document.getElementById('sortPrice');
-        const bikeGrid = document.getElementById('bikeGrid');
+        const partGrid = document.getElementById('partGrid');
 
         function filterAndSort() {
             const keyword = (searchInput.value || "").toLowerCase().trim();
-            const items = Array.from(document.querySelectorAll('.bike-item'));
+            const items = Array.from(document.querySelectorAll('.part-item'));
 
             // Filter
             items.forEach(item => {
@@ -116,7 +117,7 @@
                 return 0;
             });
 
-            visibleItems.forEach(i => bikeGrid.appendChild(i));
+            visibleItems.forEach(i => partGrid.appendChild(i));
         }
 
         searchInput.addEventListener('input', filterAndSort);

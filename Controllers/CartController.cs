@@ -4,9 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using MotorcycleShopMVC.Models;
 using System.Security.Claims;
+using MotorcycleShopMVC.Filters;
 
 namespace MotorcycleShopMVC.Controllers
 {
+    [SessionAuthorize]
     public class CartController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -17,64 +19,72 @@ namespace MotorcycleShopMVC.Controllers
         }
 
         // TODO: thay bằng user thật khi có login
-        private int GetCurrentUserId()
+        private int GetUserId()
         {
-            if(User.Identity!=null && User.Identity.IsAuthenticated)
             {
-                var claim = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                if (int.TryParse(claim, out int uid))
-                    return uid;
+                var userIdStr = HttpContext.Session.GetString("UserId");
+                if (string.IsNullOrWhiteSpace(userIdStr) || !int.TryParse(userIdStr, out var userId))
+                    return 0;
+                return userId;
             }
-            return 1;
         }
 
         private async Task<Cart> GetOrCreateCartAsync(int userId)
         {
             var cart = await _context.Carts
+                .Include(c => c.CartItems)
                 .FirstOrDefaultAsync(c => c.UserId == userId);
 
-            if (cart == null)
-            {
-                cart = new Cart
-                {
-                    UserId = userId,
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now
-                };
-                _context.Carts.Add(cart);
-                await _context.SaveChangesAsync();
-            }
+            if (cart != null) return cart;
 
+            cart = new Cart
+            {
+                UserId = userId,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now
+            };
+
+            _context.Carts.Add(cart);
+            await _context.SaveChangesAsync();
             return cart;
         }
 
-        // Trang cart
+        // GET: /Cart
         public async Task<IActionResult> Index()
         {
-            int userId = GetCurrentUserId();
-            var cart = await GetOrCreateCartAsync(userId);
+            var userId = GetUserId();
+            if (userId == 0)
+                return RedirectToAction("Login", "Account");
 
-            var items = await _context.CartItems
-                .Include(ci => ci.Motorcycle)
-                .Include(ci => ci.Part)
-                .Where(ci => ci.CartId == cart.CartId)
-                .ToListAsync();
+            var cart = await _context.Carts
+                .Include(c => c.CartItems)
+                    .ThenInclude(ci => ci.Motorcycle)
+                .Include(c => c.CartItems)
+                    .ThenInclude(ci => ci.Part)
+                .FirstOrDefaultAsync(c => c.UserId == userId);
 
-            ViewBag.CartId = cart.CartId;
+            var items = cart?.CartItems ?? new List<CartItem>();
+
             return View(items);
         }
 
         // Add motorcycle
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddMotorcycle(int motorcycleId, int quantity = 1)
+        public async Task<IActionResult> AddMotorcycle(int motorcycleId, int quantity = 1, string? returnUrl = null)
         {
             if (quantity < 1) quantity = 1;
-            int userId = GetCurrentUserId();
+
+            int userId = GetUserId();
             var cart = await GetOrCreateCartAsync(userId);
+
+            // đảm bảo motorcycle tồn tại
+            var motorcycle = await _context.Motorcycles.FirstOrDefaultAsync(m => m.MotorcycleId == motorcycleId);
+            if (motorcycle == null) return NotFound();
 
             var item = await _context.CartItems
                 .FirstOrDefaultAsync(ci => ci.CartId == cart.CartId && ci.MotorcycleId == motorcycleId);
+
             if (item == null)
             {
                 _context.CartItems.Add(new CartItem
@@ -92,14 +102,66 @@ namespace MotorcycleShopMVC.Controllers
             cart.UpdatedAt = DateTime.Now;
             await _context.SaveChangesAsync();
 
-            return Redirect(Request.Headers["Referer"].ToString());
+            if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
+                return Redirect(returnUrl);
+
+            // fallback: quay lại trang trước nếu có
+            var referer = Request.Headers["Referer"].ToString();
+            if (!string.IsNullOrWhiteSpace(referer))
+                return Redirect(referer);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        // POST: /Cart/AddPart
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddPart(int partId, int quantity = 1, string? returnUrl = null)
+        {
+            if (quantity < 1) quantity = 1;
+
+            var userId = GetUserId();
+            var cart = await GetOrCreateCartAsync(userId);
+
+            var part = await _context.Parts.FirstOrDefaultAsync(p => p.PartId == partId);
+            if (part == null) return NotFound();
+
+            var existing = await _context.CartItems.FirstOrDefaultAsync(ci =>
+                ci.CartId == cart.CartId && ci.PartId == partId);
+
+            if (existing != null)
+            {
+                existing.Quantity += quantity;
+            }
+            else
+            {
+                _context.CartItems.Add(new CartItem
+                {
+                    CartId = cart.CartId,
+                    MotorcycleId = null,
+                    PartId = partId,
+                    Quantity = quantity
+                });
+            }
+
+            cart.UpdatedAt = DateTime.Now;
+            await _context.SaveChangesAsync();
+
+            if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
+                return Redirect(returnUrl);
+
+            var referer = Request.Headers["Referer"].ToString();
+            if (!string.IsNullOrWhiteSpace(referer))
+                return Redirect(referer);
+
+            return RedirectToAction(nameof(Index));
         }
         // Tăng số lượng +1 cho 1 cart item
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> IncreaseQuantity(int cartItemId)
         {
-            int userId = GetCurrentUserId();
+            int userId = GetUserId();
             var cart = await GetOrCreateCartAsync(userId);
 
             var item = await _context.CartItems
@@ -118,19 +180,26 @@ namespace MotorcycleShopMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DecreaseQuantity(int cartItemId)
         {
-            int userId = GetCurrentUserId();
-            var cart = await GetOrCreateCartAsync(userId);
+            var userId = GetUserId();
 
-            var item = await _context.CartItems
-                .FirstOrDefaultAsync(ci => ci.CartItemId == cartItemId && ci.CartId == cart.CartId);
-            if (item == null) return NotFound();
+            var cartItem = await _context.CartItems
+                .Include(ci => ci.Cart)
+                .FirstOrDefaultAsync(ci => ci.CartItemId == cartItemId);
 
-            if (item.Quantity > 1)
+            if (cartItem == null) return NotFound();
+            if (cartItem.Cart.UserId != userId) return Forbid();
+
+            if (cartItem.Quantity > 1)
             {
-                item.Quantity -= 1;
-                cart.UpdatedAt = DateTime.Now;
-                await _context.SaveChangesAsync();
+                cartItem.Quantity -= 1;
             }
+            else
+            {
+                _context.CartItems.Remove(cartItem);
+            }
+
+            cartItem.Cart.UpdatedAt = DateTime.Now;
+            await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }
@@ -139,15 +208,36 @@ namespace MotorcycleShopMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemoveItem(int cartItemId)
         {
-            int userId = GetCurrentUserId();
-            var cart = await GetOrCreateCartAsync(userId);
+            var userId = GetUserId();
 
-            var item = await _context.CartItems
-                .FirstOrDefaultAsync(ci => ci.CartItemId == cartItemId && ci.CartId == cart.CartId);
+            var cartItem = await _context.CartItems
+                .Include(ci => ci.Cart)
+                .FirstOrDefaultAsync(ci => ci.CartItemId == cartItemId);
 
-            if (item == null) return NotFound();
+            if (cartItem == null) return NotFound();
+            if (cartItem.Cart.UserId != userId) return Forbid();
 
-            _context.CartItems.Remove(item);
+            _context.CartItems.Remove(cartItem);
+            cartItem.Cart.UpdatedAt = DateTime.Now;
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        // POST: /Cart/Clear
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Clear()
+        {
+            var userId = GetUserId();
+
+            var cart = await _context.Carts
+                .Include(c => c.CartItems)
+                .FirstOrDefaultAsync(c => c.UserId == userId);
+
+            if (cart == null) return RedirectToAction(nameof(Index));
+
+            _context.CartItems.RemoveRange(cart.CartItems);
             cart.UpdatedAt = DateTime.Now;
             await _context.SaveChangesAsync();
 
@@ -158,13 +248,16 @@ namespace MotorcycleShopMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCartCount()
         {
-            int userId = GetCurrentUserId();
+            var userId = GetUserId();
+            if (userId == 0) return Json(0);
 
-            var count = await _context.CartItems
-                .Include(ci=>ci.Cart)
-                .Where(ci => ci.Cart.UserId == userId)
-                .SumAsync(ci => (int?)ci.Quantity) ?? 0;
+            var cart = await _context.Carts
+                .Include(c => c.CartItems)
+                .FirstOrDefaultAsync(c => c.UserId == userId);
 
+            if (cart == null) return Json(0);
+
+            var count = cart.CartItems.Sum(x => x.Quantity);
             return Json(count);
         }
     }
