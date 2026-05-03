@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace MotorcycleShopMVC.Models;
 
 [Table("wishlist")]
-public partial class Wishlist
+public class Wishlist
 {
     [Key]
     [Column("wishlist_id")]
@@ -22,18 +21,15 @@ public partial class Wishlist
     [Column("part_id")]
     public int? PartId { get; set; }
 
-    [Column("added_at", TypeName = "datetime")]
-    public DateTime? AddedAt { get; set; }
+    [Column("created_at", TypeName = "datetime")]
+    public DateTime? CreatedAt { get; set; }
 
     [ForeignKey("MotorcycleId")]
-    [InverseProperty("Wishlists")]
     public virtual Motorcycle? Motorcycle { get; set; }
 
     [ForeignKey("PartId")]
-    [InverseProperty("Wishlists")]
     public virtual Part? Part { get; set; }
 
     [ForeignKey("UserId")]
-    [InverseProperty("Wishlists")]
-    public virtual User User { get; set; } = null!;
+    public virtual User? User { get; set; }
 }

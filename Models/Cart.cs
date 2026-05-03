@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace MotorcycleShopMVC.Models;
 
 [Table("cart")]
-[Index("UserId", Name = "UQ__cart__B9BE370EEF16442A", IsUnique = true)]
-[Index("UserId", Name = "idx_cart_user")]
-public partial class Cart
+public class Cart
 {
     [Key]
     [Column("cart_id")]
@@ -24,10 +21,8 @@ public partial class Cart
     [Column("updated_at", TypeName = "datetime")]
     public DateTime? UpdatedAt { get; set; }
 
-    [InverseProperty("Cart")]
-    public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
-
     [ForeignKey("UserId")]
-    [InverseProperty("Cart")]
-    public virtual User User { get; set; } = null!;
+    public virtual User? User { get; set; }
+
+    public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
 }
