@@ -283,7 +283,12 @@
                 <div class="glass p-3">
                     <h6 class="fw-bold mb-3">Cá nhân hóa</h6>
                     <div class="d-grid gap-2">
-                        <button class="btn btn-outline-light-soft">❤ Thêm vào yêu thích</button>
+                        <form asp-controller="Wishlist" asp-action="Add" method="post">
+                            <input type="hidden" name="motorcycleId" value="@Model.MotorcycleId" />
+                            <button type="submit" class="btn btn-outline-danger w-100" title="Thêm vào danh sách yêu thích">
+                                ❤️ Yêu thích
+                            </button>
+                        </form>
                         <a class="btn btn-outline-light-soft" target="_blank"
                            href="https://www.facebook.com/sharer/sharer.php?u=@Uri.EscapeDataString(currentUrl)">
                             Chia sẻ Facebook

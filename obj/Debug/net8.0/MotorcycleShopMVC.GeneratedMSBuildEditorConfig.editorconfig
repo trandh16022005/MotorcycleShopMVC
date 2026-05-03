@@ -17,91 +17,95 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MotorcycleShopMVC
 build_property.RootNamespace = MotorcycleShopMVC
-build_property.ProjectDir = C:\Users\Administrator\source\repos\MotorcycleShopMVC\
+build_property.ProjectDir = C:\Users\xongu\source\repos\MotorcycleShop-Vi\MotorcycleShopMVC\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Administrator\source\repos\MotorcycleShopMVC
+build_property.MSBuildProjectDirectory = C:\Users\xongu\source\repos\MotorcycleShop-Vi\MotorcycleShopMVC
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/Account/Login.cshtml]
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/Account/Register.cshtml]
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/Cart/Index.cshtml]
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/Cart/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/Home/Index.cshtml]
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/Home/Privacy.cshtml]
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/Motorcycle/Create.cshtml]
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/Motorcycle/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b3JjeWNsZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/Motorcycle/Delete.cshtml]
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/Motorcycle/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b3JjeWNsZVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/Motorcycle/Detail.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b3JjeWNsZVxEZXRhaWwuY3NodG1s
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/Motorcycle/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b3JjeWNsZVxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/Motorcycle/Edit.cshtml]
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/Motorcycle/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b3JjeWNsZVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/Motorcycle/Index.cshtml]
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/Motorcycle/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b3JjeWNsZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/Part/Create.cshtml]
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/Part/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/Part/Delete.cshtml]
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/Part/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydFxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/Part/Detail.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydFxEZXRhaWwuY3NodG1s
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/Part/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydFxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/Part/Edit.cshtml]
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/Part/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/Part/Index.cshtml]
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/Part/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/Shared/Error.cshtml]
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/_ViewImports.cshtml]
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/WishList/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaExpc3RcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/_ViewStart.cshtml]
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/MotorcycleShopMVC/Views/Shared/_Layout.cshtml]
+[C:/Users/xongu/source/repos/MotorcycleShop-Vi/MotorcycleShopMVC/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-k61t17i205

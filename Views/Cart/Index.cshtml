@@ -60,7 +60,7 @@ else
                         @if (item.MotorcycleId != null)
                         {
                             <a asp-controller="Motorcycle"
-                                   asp-action="Detail"
+                                   asp-action="Details"
                                    asp-route-id="@item.MotorcycleId"
                                    class="btn btn-sm btn-info text-white">
                                 Xem chi tiết
@@ -69,7 +69,7 @@ else
                         else if (item.PartId != null)
                         {
                             <a asp-controller="Part"
-                                   asp-action="Detail"
+                                   asp-action="Details"
                                    asp-route-id="@item.PartId"
                                    class="btn btn-sm btn-info text-white">
                                 Xem chi tiết

@@ -29,7 +29,7 @@ namespace MotorcycleShopMVC.Controllers
         }
 
         // GET: Part/Details/5
-        public async Task<IActionResult> Detail(int? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
