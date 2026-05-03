@@ -1,18 +1,27 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MotorcycleShopMVC</title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MotorcycleShopMVC.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow">
-            <div class="container-fluid">
+    @{
+        var userEmail = Context.Session.GetString("UserEmail");
+        var userFullName = Context.Session.GetString("UserFullName");
+        var userRole = Context.Session.GetString("UserRole"); // "Admin" / "Customer"
+        bool isLoggedIn = !string.IsNullOrWhiteSpace(userEmail);
+        bool isAdmin = string.Equals(userRole, "Admin", StringComparison.OrdinalIgnoreCase);
+    }
 
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
+            <div class="container">
                 <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">
                     🏍 MotorcycleShop
                 </a>
@@ -22,42 +31,104 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarMain">
-
-                    <ul class="navbar-nav me-auto">
-
+                    <!-- Left menu -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-controller="Motorcycle" asp-action="Index">Motorcycles</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-controller="Motorcycle" asp-action="Index">
-                                Motorcycles
-                            </a>
-                        </li>
+                        @if (isAdmin)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-warning fw-semibold" asp-controller="Motorcycle" asp-action="Create">
+                                    + Add Motorcycle
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-warning fw-semibold" asp-controller="Part" asp-action="Index">
+                                    Manage Parts
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Part" asp-action="Index">Parts</a>
+                            </li>
+                        }
 
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Privacy">Support</a>
+                        </li>
                     </ul>
 
-                    <a class="btn btn-warning me-2">🛒 Cart</a>
-                    <a class="btn btn-outline-light">Login</a>
+                    <!-- Right side -->
+                    <div class="d-flex align-items-center">
+                        @if (isLoggedIn)
+                        {
+                            <a class="nav-link text-white position-relative d-inline-block pe-3 me-3"
+                                   asp-controller="Cart" asp-action="Index">
+                                🛒Giỏ hàng
+                                <span id="cart-count"
+                                      class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    0
+                                </span>
+                            </a>
 
+                            <span class="text-white me-2">
+                                Xin chào, @(string.IsNullOrWhiteSpace(userFullName) ? userEmail : userFullName)
+                                @if (isAdmin)
+                                {
+                                    <span class="badge bg-warning text-dark ms-1">Admin</span>
+                                }
+                            </span>
+
+                            <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-outline-light btn-sm">Đăng xuất</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <a class="btn btn-outline-light btn-sm" asp-controller="Account" asp-action="Login">Đăng nhập</a>
+                            <a class="btn btn-light btn-sm ms-2" asp-controller="Account" asp-action="Register">Đăng ký</a>
+                        }
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+
+    <div class="container py-3">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - MotorcycleShopMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer text-muted mt-4">
+        <div class="container py-2">
+            &copy; 2026 - MotorcycleShopMVC -
+            <a asp-controller="Home" asp-action="Privacy">Privacy & Support</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+            async function refreshCartCount() {
+                try {
+                    const res = await fetch('/Cart/GetCartCount', { cache: 'no-store' });
+                    const count = await res.json();
+                    const el = document.getElementById('cart-count');
+                    if (el) el.textContent = count;
+                } catch (err) {
+                    console.error(err);
+                }
+            }
+            document.addEventListener('DOMContentLoaded', refreshCartCount);
+    </script>
 </body>
 </html>

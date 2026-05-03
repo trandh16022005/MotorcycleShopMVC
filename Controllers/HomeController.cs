@@ -27,7 +27,7 @@ namespace MotorcycleShopMVC.Controllers
                 motorcycles = motorcycles.Where(m => m.BrandId == brandId);
             }
 
-            var result = await motorcycles.Take(8).ToListAsync();
+            var result = await motorcycles.Take(12).ToListAsync();
 
             ViewBag.Brands = brands;
             ViewBag.SelectedBrand = brandId;
