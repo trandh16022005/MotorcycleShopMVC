@@ -1,10 +1,12 @@
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MotorcycleShopMVC.Models;
+using MotorcycleShopMVC.Filters;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System;
 
 namespace MotorcycleShopMVC.Controllers
 {
@@ -17,7 +19,7 @@ namespace MotorcycleShopMVC.Controllers
             _context = context;
         }
 
-        // GET: Motorcycle
+        // INDEX + FILTER + PAGINATION
         public async Task<IActionResult> Index(
             string searchString,
             int? brandId,
@@ -27,13 +29,16 @@ namespace MotorcycleShopMVC.Controllers
             string engineRange,
             int? pageNumber)
         {
-            // 1. Lấy dữ liệu cơ bản cho các dropdown filter
-            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName", brandId);
-            ViewData["TypeId"] = new SelectList(_context.VehicleTypes, "TypeId", "TypeName", typeId);
-            // Lấy danh sách các năm sản xuất duy nhất từ DB để làm filter
-            ViewData["YearFrom"] = new SelectList(await _context.Motorcycles.Select(m => m.YearFrom).Distinct().OrderByDescending(y => y).ToListAsync());
+            // Dropdown filter
+            ViewData["BrandId"] = new SelectList(await _context.Brands.ToListAsync(), "BrandId", "BrandName", brandId);
+            ViewData["TypeId"] = new SelectList(await _context.VehicleTypes.ToListAsync(), "TypeId", "TypeName", typeId);
+            ViewData["YearFrom"] = new SelectList(await _context.Motorcycles
+                .Select(m => m.YearFrom)
+                .Distinct()
+                .OrderByDescending(y => y)
+                .ToListAsync());
 
-            // Tạo danh sách cho các khoảng giá và dung tích
+            // Price range
             var priceRanges = new List<SelectListItem>
             {
                 new SelectListItem { Value = "0-20000000", Text = "Dưới 20 triệu" },
@@ -43,6 +48,7 @@ namespace MotorcycleShopMVC.Controllers
             };
             ViewData["PriceRanges"] = new SelectList(priceRanges, "Value", "Text", priceRange);
 
+            // Engine range
             var engineRanges = new List<SelectListItem>
             {
                 new SelectListItem { Value = "0-100", Text = "Dưới 100cc" },
@@ -51,7 +57,7 @@ namespace MotorcycleShopMVC.Controllers
             };
             ViewData["EngineRanges"] = new SelectList(engineRanges, "Value", "Text", engineRange);
 
-            // Lưu lại các giá trị filter để hiển thị lại trên view
+            // giữ filter
             ViewData["CurrentFilter"] = searchString;
             ViewData["CurrentBrandId"] = brandId;
             ViewData["CurrentTypeId"] = typeId;
@@ -59,32 +65,24 @@ namespace MotorcycleShopMVC.Controllers
             ViewData["CurrentPriceRange"] = priceRange;
             ViewData["CurrentEngineRange"] = engineRange;
 
-            // 2. Bắt đầu truy vấn
+            // Query
             var motorcycles = _context.Motorcycles
                 .Include(m => m.Brand)
                 .Include(m => m.Type)
                 .AsQueryable();
 
-            // 3. Áp dụng các bộ lọc (filter & search)
+            // Filter
             if (!string.IsNullOrEmpty(searchString))
-            {
                 motorcycles = motorcycles.Where(s => s.ModelName.Contains(searchString));
-            }
 
             if (brandId.HasValue)
-            {
                 motorcycles = motorcycles.Where(m => m.BrandId == brandId.Value);
-            }
 
             if (typeId.HasValue)
-            {
                 motorcycles = motorcycles.Where(m => m.TypeId == typeId.Value);
-            }
 
             if (yearFrom.HasValue)
-            {
                 motorcycles = motorcycles.Where(m => m.YearFrom == yearFrom.Value);
-            }
 
             if (!string.IsNullOrEmpty(priceRange))
             {
@@ -98,35 +96,32 @@ namespace MotorcycleShopMVC.Controllers
                 motorcycles = motorcycles.Where(m => m.EngineCapacity >= capacities[0] && m.EngineCapacity < capacities[1]);
             }
 
-            // 4. Phân trang
-            int pageSize = 10; // Số lượng sản phẩm mỗi trang
-            var paginatedList = await PaginatedList<Motorcycle>.CreateAsync(motorcycles.AsNoTracking(), pageNumber ?? 1, pageSize);
+            // Pagination
+            int pageSize = 9;
+            var paginatedList = await PaginatedList<Motorcycle>.CreateAsync(
+                motorcycles.AsNoTracking().OrderByDescending(m => m.CreatedAt),
+                pageNumber ?? 1,
+                pageSize
+            );
 
             return View(paginatedList);
         }
 
-        // ... các action khác (Details, Create, Edit, Delete) giữ nguyên ...
-        // GET: Motorcycle/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var motorcycle = await _context.Motorcycles
                 .Include(m => m.Brand)
                 .Include(m => m.Type)
                 .FirstOrDefaultAsync(m => m.MotorcycleId == id);
-            if (motorcycle == null)
-            {
-                return NotFound();
-            }
+
+            if (motorcycle == null) return NotFound();
 
             return View(motorcycle);
         }
 
-        // GET: Motorcycle/Create
+        [RoleAuthorize("Admin")]
         public IActionResult Create()
         {
             ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName");
@@ -136,7 +131,8 @@ namespace MotorcycleShopMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MotorcycleId,ModelName,BrandId,TypeId,EngineCapacity,YearFrom,YearTo,Price,Color,WarrantyPolicy,ImagePath,Description,StockQty")] Motorcycle motorcycle)
+        [RoleAuthorize("Admin")]
+        public async Task<IActionResult> Create(Motorcycle motorcycle)
         {
             if (ModelState.IsValid)
             {
@@ -146,91 +142,60 @@ namespace MotorcycleShopMVC.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName", motorcycle.BrandId);
-            ViewData["TypeId"] = new SelectList(_context.VehicleTypes, "TypeId", "TypeName", motorcycle.TypeId);
             return View(motorcycle);
         }
 
+        [RoleAuthorize("Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
+            if (id == null) return NotFound();
             var motorcycle = await _context.Motorcycles.FindAsync(id);
-            if (motorcycle == null)
-            {
-                return NotFound();
-            }
-            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName", motorcycle.BrandId);
-            ViewData["TypeId"] = new SelectList(_context.VehicleTypes, "TypeId", "TypeName", motorcycle.TypeId);
+            if (motorcycle == null) return NotFound();
+
             return View(motorcycle);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MotorcycleId,ModelName,BrandId,TypeId,EngineCapacity,YearFrom,YearTo,Price,Color,WarrantyPolicy,ImagePath,Description,StockQty,CreatedAt")] Motorcycle motorcycle)
+        [RoleAuthorize("Admin")]
+        public async Task<IActionResult> Edit(int id, Motorcycle motorcycle)
         {
-            if (id != motorcycle.MotorcycleId)
-            {
-                return NotFound();
-            }
+            if (id != motorcycle.MotorcycleId) return NotFound();
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    motorcycle.UpdatedAt = DateTime.Now;
-                    _context.Update(motorcycle);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!MotorcycleExists(motorcycle.MotorcycleId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                motorcycle.UpdatedAt = DateTime.Now;
+                _context.Update(motorcycle);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName", motorcycle.BrandId);
-            ViewData["TypeId"] = new SelectList(_context.VehicleTypes, "TypeId", "TypeName", motorcycle.TypeId);
+
             return View(motorcycle);
         }
 
+        [RoleAuthorize("Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var motorcycle = await _context.Motorcycles
                 .Include(m => m.Brand)
                 .Include(m => m.Type)
                 .FirstOrDefaultAsync(m => m.MotorcycleId == id);
-            if (motorcycle == null)
-            {
-                return NotFound();
-            }
+
+            if (motorcycle == null) return NotFound();
 
             return View(motorcycle);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [RoleAuthorize("Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var motorcycle = await _context.Motorcycles.FindAsync(id);
             if (motorcycle != null)
-            {
                 _context.Motorcycles.Remove(motorcycle);
-            }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

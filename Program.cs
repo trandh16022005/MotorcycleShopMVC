@@ -1,21 +1,71 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MotorcycleShopMVC.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 🔥 Add services to the container
+// Services
 builder.Services.AddControllersWithViews();
 
-// 🔥 Kết nối SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")
     )
 );
 
+// Session
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+builder.Services.AddHttpContextAccessor();
+
 var app = builder.Build();
 
-// 🔥 Configure HTTP request pipeline
+
+// 🔥 👉 ĐẶT ĐOẠN SEED Ở ĐÂY (ĐÚNG CHỖ)
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    var hasher = new PasswordHasher<User>();
+
+    var adminEmail = "admin@gmail.com";
+
+    var user = context.Users.FirstOrDefault(u => u.Email == adminEmail);
+
+    if (user == null)
+    {
+        user = new User
+        {
+            FullName = "Admin System",
+            Email = adminEmail,
+            PhoneNumber = "0900000000",
+            Address = "Hà Nội",
+            Role = "admin",
+            CreatedAt = DateTime.Now,
+            UpdatedAt = DateTime.Now
+        };
+
+        user.PasswordHash = hasher.HashPassword(user, "123456");
+
+        context.Users.Add(user);
+    }
+    else
+    {
+        user.PasswordHash = hasher.HashPassword(user, "123456");
+        user.Role = "admin";
+        user.UpdatedAt = DateTime.Now;
+    }
+
+    context.SaveChanges();
+}
+
+
+// Middleware
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -23,7 +73,7 @@ if (!app.Environment.IsDevelopment())
 }
 else
 {
-    app.UseDeveloperExceptionPage(); // debug dễ hơn
+    app.UseDeveloperExceptionPage();
 }
 
 app.UseHttpsRedirection();
@@ -31,9 +81,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseSession();
 app.UseAuthorization();
 
-// 🔥 Route mặc định
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}"

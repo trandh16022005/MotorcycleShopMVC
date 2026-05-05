@@ -1,123 +1,96 @@
 ﻿@model MotorcycleShopMVC.Models.Motorcycle
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Chi tiết xe";
+    var price = Model?.Price ?? 0;
+    var bikeName = Model?.ModelName ?? "Motorcycle";
+    var imagePath = !string.IsNullOrWhiteSpace(Model?.ImagePath)
+        ? Url.Content("~/" + Model.ImagePath)
+        : "https://via.placeholder.com/1200x700?text=Motorcycle";
+
+    var currentUrl = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}";
 }
 
-<h1>Details</h1>
+<style>
+    body {
+        background: #0b0b0d;
+        color: #f4f4f5;
+    }
 
-<div>
-    <h4>Motorcycle</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ModelName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ModelName)
-        </dd>
+    .glass {
+        background: #141418;
+        border: 1px solid #27272a;
+        border-radius: 16px;
+        padding: 20px;
+    }
 
-        ```
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EngineCapacity)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EngineCapacity)
-        </dd>
+    .hero-img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 12px;
+    }
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.YearFrom)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.YearFrom)
-        </dd>
+    .price {
+        color: #facc15;
+        font-weight: bold;
+        font-size: 1.8rem;
+    }
+</style>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.YearTo)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.YearTo)
-        </dd>
+<div class="container mt-4">
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+    <div class="row">
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Color)
-        </dd>
+        <!-- LEFT -->
+        <div class="col-lg-8">
+            <div class="glass mb-4">
+                <img src="@imagePath" class="hero-img mb-3" />
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.WarrantyPolicy)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.WarrantyPolicy)
-        </dd>
+                <h2>@Model.ModelName</h2>
+                <div class="price">@price.ToString("N0") VND</div>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </dt>
-        <dd class="col-sm-10">
-            <span>@Model.ImagePath</span>
-            <br />
-            <img src="@Url.Content("~/" + Model.ImagePath)"
-                 alt="Hình xe"
-                 style="max-width:300px;max-height:200px;" />
-        </dd>
+                <p><b>Hãng:</b> @(Model.Brand?.BrandName ?? "N/A")</p>
+                <p><b>Năm:</b> @Model.YearFrom - @Model.YearTo</p>
+                <p><b>Màu:</b> @Model.Color</p>
+                <p><b>Dung tích:</b> @Model.EngineCapacity cc</p>
+                <p><b>Tồn kho:</b> @Model.StockQty</p>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                <hr />
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.StockQty)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.StockQty)
-        </dd>
+                <h5>Mô tả</h5>
+                <p>@(string.IsNullOrEmpty(Model.Description) ? "Chưa có mô tả" : Model.Description)</p>
+            </div>
+        </div>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
+        <!-- RIGHT -->
+        <div class="col-lg-4">
+            <div class="glass">
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.UpdatedAt)
-        </dd>
+                <h5>Hành động</h5>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Brand.BrandId)
-        </dd>
+                <form asp-controller="Cart" asp-action="AddMotorcycle" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="motorcycleId" value="@Model.MotorcycleId" />
+                    <button class="btn btn-success w-100 mb-2">
+                        🛒 Thêm vào giỏ hàng
+                    </button>
+                </form>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Type)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Type.TypeId)
-        </dd>
-    </dl>
-    ```
+                <form asp-controller="Wishlist" asp-action="Add" method="post">
+                    <input type="hidden" name="motorcycleId" value="@Model.MotorcycleId" />
+                    <button class="btn btn-outline-danger w-100 mb-2">
+                        ❤️ Yêu thích
+                    </button>
+                </form>
 
-</div>
+                <a asp-action="Index" class="btn btn-secondary w-100">
+                    ← Quay lại
+                </a>
 
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.MotorcycleId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+
+    </div>
+
 </div>

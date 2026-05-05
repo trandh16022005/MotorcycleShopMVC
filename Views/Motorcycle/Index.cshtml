@@ -1,202 +1,158 @@
-﻿@model PaginatedList<MotorcycleShopMVC.Models.Motorcycle>
+@model PaginatedList<MotorcycleShopMVC.Models.Motorcycle>
 
 @{
-    ViewData["Title"] = "Danh sách xe";
+    ViewData["Title"] = "Motorcycle Library";
 }
 
-<h1>@ViewData["Title"]</h1>
+<div class="container mt-4">
 
-<p>
-    <a asp-action="Create" class="btn btn-success">Thêm xe mới</a>
-</p>
-
-<!-- FILTER -->
-<form asp-action="Index" method="get">
-    <div class="row mb-3">
-        <div class="col-md-3">
-            <input type="text" name="searchString" value="@ViewData["CurrentFilter"]"
-                   class="form-control" placeholder="Tìm theo tên xe..." />
-        </div>
-
-        <div class="col-md-2">
-            <select name="brandId" asp-items="@(ViewData["BrandId"] as SelectList)" class="form-control">
-                <option value="">Tất cả hãng</option>
-            </select>
-        </div>
-
-        <div class="col-md-2">
-            <select name="typeId" asp-items="@(ViewData["TypeId"] as SelectList)" class="form-control">
-                <option value="">Tất cả loại</option>
-            </select>
-        </div>
-
-        <div class="col-md-2">
-            <select name="yearFrom" asp-items="@(ViewData["YearFrom"] as SelectList)" class="form-control">
-                <option value="">Tất cả năm</option>
-            </select>
-        </div>
+    <!-- 🔥 HERO -->
+    <div class="p-4 mb-4 text-white rounded" style="background: linear-gradient(135deg,#1a1a1a,#343a40)">
+        <h1 class="fw-bold">Motorcycle Library</h1>
+        <p>Discover your perfect ride</p>
+        <span class="badge bg-light text-dark">
+            Tổng: @Model.TotalItemCount xe
+        </span>
     </div>
 
-    <div class="row mb-3">
-        <div class="col-md-3">
-            <select name="priceRange" asp-items="@(ViewData["PriceRanges"] as SelectList)" class="form-control">
-                <option value="">Tất cả giá</option>
-            </select>
+    <!-- 🔍 FILTER -->
+    <form asp-action="Index" method="get" class="bg-light p-3 rounded shadow-sm mb-4">
+        <div class="row g-2">
+
+            <div class="col-md-3">
+                <input type="text" name="searchString"
+                       value="@ViewData["CurrentFilter"]"
+                       class="form-control"
+                       placeholder="Tìm xe..." />
+            </div>
+
+            <div class="col-md-2">
+                <select name="brandId" asp-items="@(ViewData["BrandId"] as SelectList)" class="form-select">
+                    <option value="">Hãng</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <select name="typeId" asp-items="@(ViewData["TypeId"] as SelectList)" class="form-select">
+                    <option value="">Loại</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <select name="priceRange" asp-items="@(ViewData["PriceRanges"] as SelectList)" class="form-select">
+                    <option value="">Giá</option>
+                </select>
+            </div>
+
+            <div class="col-md-3 d-flex gap-2">
+                <button class="btn btn-primary w-100">Tìm</button>
+                <a asp-action="Index" class="btn btn-secondary w-100">Reset</a>
+            </div>
+
         </div>
+    </form>
 
-        <div class="col-md-3">
-            <select name="engineRange" asp-items="@(ViewData["EngineRanges"] as SelectList)" class="form-control">
-                <option value="">Tất cả dung tích</option>
-            </select>
-        </div>
-
-        <div class="col-md-3">
-            <button type="submit" class="btn btn-primary">Tìm</button>
-            <a asp-action="Index" class="btn btn-secondary ms-2">Reset</a>
-        </div>
-    </div>
-</form>
-
-<!-- TABLE -->
-<table class="table table-bordered table-striped">
-    <thead class="table-dark">
-        <tr>
-            <th>Hình</th>
-            <th>Tên xe</th>
-            <th>Hãng</th>
-            <th>Loại</th>
-            <th>Giá</th>
-            <th>Năm</th>
-            <th>Tồn kho</th>
-            <th class="text-center">Hành động</th>
-        </tr>
-    </thead>
-
-    <tbody>
+    <!-- 🚗 GRID -->
+    <div class="row g-4">
         @foreach (var item in Model)
         {
-            <tr>
-                <td class="text-center">
-                    @if (!string.IsNullOrEmpty(item.ImagePath))
-                    {
-                        <img src="@Url.Content("~/" + item.ImagePath)"
-                             alt="@item.ModelName"
-                             style="width:100px; height:auto; object-fit:cover;" />
-                    }
-                </td>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
 
-                <td>@item.ModelName</td>
-                <td>@item.Brand?.BrandName</td>
-                <td>@item.Type?.TypeName</td>
-                <td>@item.Price.ToString("N0") VNĐ</td>
-                <td>@item.YearFrom</td>
-                <td>@item.StockQty</td>
+                    <img src="@Url.Content("~/" + item.ImagePath)"
+                         class="card-img-top"
+                         style="height:200px; object-fit:cover;" />
 
-                <td class="text-center" style="min-width:180px;">
-                    <a asp-action="Edit" asp-route-id="@item.MotorcycleId"
-                       class="btn btn-sm btn-info">Sửa</a>
+                    <div class="card-body d-flex flex-column">
 
-                    <a asp-action="Details" asp-route-id="@item.MotorcycleId"
-                       class="btn btn-sm btn-secondary">Chi tiết</a>
+                        <h5 class="fw-bold">@item.ModelName</h5>
 
-                    <a asp-action="Delete" asp-route-id="@item.MotorcycleId"
-                       class="btn btn-sm btn-danger">Xóa</a>
+                        <p class="text-muted mb-1">
+                            @item.Brand?.BrandName
+                        </p>
 
-                    <!-- AJAX ADD TO CART -->
-                    <button type="button"
-                            class="btn btn-sm btn-success add-to-cart-btn mt-1"
-                            data-id="@item.MotorcycleId">
-                        🛒 Thêm
-                    </button>
-                </td>
-            </tr>
+                        <small>
+                            Engine: @item.EngineCapacity cc <br />
+                            Stock: @item.StockQty
+                        </small>
+
+                        <h5 class="text-danger mt-2">
+                            @item.Price.ToString("N0") VNĐ
+                        </h5>
+
+                        <div class="mt-auto d-grid gap-2">
+
+                            <a asp-action="Details"
+                                   asp-route-id="@item.MotorcycleId"
+                                   class="btn btn-primary">
+                                Xem chi tiết
+                            </a>
+
+                            <form asp-controller="Cart" asp-action="AddMotorcycle" method="post">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="motorcycleId" value="@item.MotorcycleId" />
+                                <input type="hidden" name="quantity" value="1" />
+                                <button class="btn btn-success">
+                                    🛒 Thêm vào giỏ
+                                </button>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         }
-    </tbody>
-</table>
+    </div>
 
-<!-- PAGINATION -->
-@{
-    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    <!-- 📄 PAGINATION -->
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
 
-    var routeData = new Dictionary<string, string>
-    {
-        { "searchString", ViewData["CurrentFilter"]?.ToString() },
-        { "brandId", ViewData["CurrentBrandId"]?.ToString() },
-        { "typeId", ViewData["CurrentTypeId"]?.ToString() },
-        { "yearFrom", ViewData["CurrentYearFrom"]?.ToString() },
-        { "priceRange", ViewData["CurrentPriceRange"]?.ToString() },
-        { "engineRange", ViewData["CurrentEngineRange"]?.ToString() }
-    };
-}
-
-<div class="d-flex justify-content-center">
-    <ul class="pagination">
-        <li class="page-item @prevDisabled">
-            <a class="page-link"
-                   asp-action="Index"
-                   asp-all-route-data="@routeData"
-                   asp-route-pageNumber="@(Model.PageIndex - 1)">
-                Trước
-            </a>
-        </li>
-
-        @for (int i = 1; i <= Model.TotalPages; i++)
+        var routeData = new Dictionary<string, string>
         {
-            <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+            { "searchString", ViewData["CurrentFilter"]?.ToString() },
+            { "brandId", ViewData["CurrentBrandId"]?.ToString() },
+            { "typeId", ViewData["CurrentTypeId"]?.ToString() },
+            { "priceRange", ViewData["CurrentPriceRange"]?.ToString() }
+        };
+    }
+
+    <div class="d-flex justify-content-center mt-4">
+        <ul class="pagination">
+
+            <li class="page-item @prevDisabled">
                 <a class="page-link"
                        asp-action="Index"
                        asp-all-route-data="@routeData"
-                       asp-route-pageNumber="@i">
-                    @i
+                       asp-route-pageNumber="@(Model.PageIndex - 1)">
+                    Trước
                 </a>
             </li>
-        }
 
-        <li class="page-item @nextDisabled">
-            <a class="page-link"
-                   asp-action="Index"
-                   asp-all-route-data="@routeData"
-                   asp-route-pageNumber="@(Model.PageIndex + 1)">
-                Sau
-            </a>
-        </li>
-    </ul>
-</div>
-
-@section Scripts {
-    <script>
-        async function addToCart(id) {
-            const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
-
-            const formData = new FormData();
-            formData.append("motorcycleId", id);
-            formData.append("quantity", 1);
-            if (token) formData.append("__RequestVerificationToken", token);
-
-            const res = await fetch('/Cart/AddMotorcycle', {
-                method: 'POST',
-                body: formData
-            });
-
-            const data = await res.json();
-
-            if (data.success) {
-                const count = document.getElementById('cart-count');
-                if (count) count.innerText = data.count;
-
-                alert("✅ Đã thêm vào giỏ!");
-            } else {
-                alert("❌ Lỗi thêm giỏ hàng");
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                    <a class="page-link"
+                           asp-action="Index"
+                           asp-all-route-data="@routeData"
+                           asp-route-pageNumber="@i">
+                        @i
+                    </a>
+                </li>
             }
-        }
 
-        document.addEventListener('click', function (e) {
-            const btn = e.target.closest('.add-to-cart-btn');
-            if (!btn) return;
+            <li class="page-item @nextDisabled">
+                <a class="page-link"
+                       asp-action="Index"
+                       asp-all-route-data="@routeData"
+                       asp-route-pageNumber="@(Model.PageIndex + 1)">
+                    Sau
+                </a>
+            </li>
 
-            const id = btn.getAttribute('data-id');
-            addToCart(id);
-        });
-    </script>
-}
+        </ul>
+    </div>
+
+</div>
