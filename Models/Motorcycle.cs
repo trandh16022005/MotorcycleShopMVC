@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace MotorcycleShopMVC.Models;
 
 [Table("motorcycle")]
-public partial class Motorcycle
+public class Motorcycle
 {
     [Key]
     [Column("motorcycle_id")]
     public int MotorcycleId { get; set; }
 
+    [Required(ErrorMessage = "Tên Model không được để trống")]
     [Column("model_name")]
     [StringLength(100)]
-    public string ModelName { get; set; } = null!;
+    public string ModelName { get; set; } = string.Empty;
 
     [Column("brand_id")]
     public int BrandId { get; set; }
@@ -32,6 +32,7 @@ public partial class Motorcycle
     [Column("year_to")]
     public int? YearTo { get; set; }
 
+    [Required]
     [Column("price", TypeName = "decimal(18, 2)")]
     public decimal Price { get; set; }
 
@@ -60,26 +61,14 @@ public partial class Motorcycle
     public DateTime? UpdatedAt { get; set; }
 
     [ForeignKey("BrandId")]
-    [InverseProperty("Motorcycles")]
-    public virtual Brand Brand { get; set; } = null!;
-
-    [InverseProperty("Motorcycle")]
-    public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
-
-    [InverseProperty("Motorcycle")]
-    public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
-
-    [InverseProperty("Motorcycle")]
-    public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
+    public virtual Brand? Brand { get; set; }
 
     [ForeignKey("TypeId")]
-    [InverseProperty("Motorcycles")]
     public virtual VehicleType? Type { get; set; }
 
-    [InverseProperty("Motorcycle")]
+    public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
+    public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+    public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
     public virtual ICollection<Wishlist> Wishlists { get; set; } = new List<Wishlist>();
-
-    [ForeignKey("MotorcycleId")]
-    [InverseProperty("Motorcycles")]
     public virtual ICollection<Part> Parts { get; set; } = new List<Part>();
 }

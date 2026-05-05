@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace MotorcycleShopMVC.Models;
 
 [Table("part")]
-public partial class Part
+public class Part
 {
     [Key]
     [Column("part_id")]
     public int PartId { get; set; }
 
+    [Required(ErrorMessage = "Tên phụ tùng không được để trống")]
     [Column("part_name")]
     [StringLength(150)]
-    public string PartName { get; set; } = null!;
+    public string PartName { get; set; } = string.Empty;
 
     [Column("category_id")]
     public int? CategoryId { get; set; }
@@ -23,6 +23,7 @@ public partial class Part
     [Column("brand_id")]
     public int? BrandId { get; set; }
 
+    [Required]
     [Column("price", TypeName = "decimal(18, 2)")]
     public decimal Price { get; set; }
 
@@ -46,26 +47,14 @@ public partial class Part
     public DateTime? UpdatedAt { get; set; }
 
     [ForeignKey("BrandId")]
-    [InverseProperty("Parts")]
     public virtual Brand? Brand { get; set; }
 
-    [InverseProperty("Part")]
-    public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
-
     [ForeignKey("CategoryId")]
-    [InverseProperty("Parts")]
     public virtual PartCategory? Category { get; set; }
 
-    [InverseProperty("Part")]
+    public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
     public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
-
-    [InverseProperty("Part")]
     public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
-
-    [InverseProperty("Part")]
     public virtual ICollection<Wishlist> Wishlists { get; set; } = new List<Wishlist>();
-
-    [ForeignKey("PartId")]
-    [InverseProperty("Parts")]
     public virtual ICollection<Motorcycle> Motorcycles { get; set; } = new List<Motorcycle>();
 }

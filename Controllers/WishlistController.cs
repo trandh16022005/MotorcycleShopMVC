@@ -42,7 +42,7 @@ namespace MotorcycleShopMVC.Controllers
                     .ThenInclude(m => m.Brand) // Include Brand cho Motorcycle
                 .Include(w => w.Part)
                     .ThenInclude(p => p.Brand) // Include Brand cho Part
-                .OrderByDescending(w => w.AddedAt)
+                .OrderByDescending(w => w.CreatedAt)
                 .ToListAsync();
 
             return View(wishlistItems);
@@ -74,7 +74,7 @@ namespace MotorcycleShopMVC.Controllers
                 UserId = userId,
                 MotorcycleId = motorcycleId,
                 PartId = partId,
-                AddedAt = DateTime.Now
+                CreatedAt = DateTime.Now
             };
 
             _context.Wishlists.Add(wishlistItem);

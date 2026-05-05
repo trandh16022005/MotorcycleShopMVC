@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace MotorcycleShopMVC.Models;
 
-[Table("order")]
-[Index("UserId", Name = "idx_order_user")]
-public partial class Order
+[Table("orders")]
+public class Order
 {
     [Key]
     [Column("order_id")]
@@ -17,30 +15,29 @@ public partial class Order
     [Column("user_id")]
     public int UserId { get; set; }
 
-    [Column("promotion_id")]
-    public int? PromotionId { get; set; }
-
     [Column("order_date", TypeName = "datetime")]
     public DateTime? OrderDate { get; set; }
 
+    [Required]
     [Column("total_amount", TypeName = "decimal(18, 2)")]
     public decimal TotalAmount { get; set; }
 
+    [Required]
+    [Column("status")]
+    [StringLength(20)]
+    public string Status { get; set; } = "pending";
+
     [Column("shipping_address")]
     [StringLength(255)]
-    public string ShippingAddress { get; set; } = null!;
+    public string? ShippingAddress { get; set; }
 
     [Column("payment_status")]
-    [StringLength(50)]
+    [StringLength(20)]
     public string? PaymentStatus { get; set; }
 
-    [Column("order_status")]
+    [Column("payment_method")]
     [StringLength(50)]
-    public string? OrderStatus { get; set; }
-
-    [Column("note")]
-    [StringLength(500)]
-    public string? Note { get; set; }
+    public string? PaymentMethod { get; set; }
 
     [Column("created_at", TypeName = "datetime")]
     public DateTime? CreatedAt { get; set; }
@@ -48,13 +45,8 @@ public partial class Order
     [Column("updated_at", TypeName = "datetime")]
     public DateTime? UpdatedAt { get; set; }
 
-    [InverseProperty("Order")]
-    public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
-
-    [InverseProperty("Order")]
-    public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
-
     [ForeignKey("UserId")]
-    [InverseProperty("Orders")]
-    public virtual User User { get; set; } = null!;
+    public virtual User? User { get; set; }
+
+    public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 }

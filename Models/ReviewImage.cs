@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace MotorcycleShopMVC.Models;
 
 [Table("review_image")]
-public partial class ReviewImage
+public class ReviewImage
 {
     [Key]
     [Column("image_id")]
@@ -16,11 +15,11 @@ public partial class ReviewImage
     [Column("review_id")]
     public int ReviewId { get; set; }
 
+    [Required]
     [Column("image_path")]
     [StringLength(255)]
-    public string ImagePath { get; set; } = null!;
+    public string ImagePath { get; set; } = string.Empty;
 
     [ForeignKey("ReviewId")]
-    [InverseProperty("ReviewImages")]
-    public virtual Review Review { get; set; } = null!;
+    public virtual Review? Review { get; set; }
 }
