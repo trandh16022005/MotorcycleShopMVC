@@ -4,6 +4,8 @@
     ViewData["Title"] = "Chi tiết phụ tùng";
 
     var price = Model?.Price ?? 0;
+    var partName = Model?.PartName ?? "Part";
+
     var imagePath = !string.IsNullOrWhiteSpace(Model?.ImagePath)
         ? Url.Content("~/" + Model.ImagePath)
         : "https://via.placeholder.com/1200x700?text=Part";
@@ -24,7 +26,7 @@
 
     .hero-img {
         width: 100%;
-        height: 400px;
+        height: 450px;
         object-fit: cover;
         border-radius: 12px;
     }
@@ -34,6 +36,24 @@
         font-weight: bold;
         font-size: 1.8rem;
     }
+
+    .spec-box {
+        background: #101014;
+        border: 1px solid #27272a;
+        border-radius: 12px;
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+
+    .spec-title {
+        color: #a1a1aa;
+        font-size: 0.9rem;
+    }
+
+    .spec-value {
+        font-weight: bold;
+        font-size: 1.05rem;
+    }
 </style>
 
 <div class="container mt-4">
@@ -42,35 +62,60 @@
 
         <!-- LEFT -->
         <div class="col-lg-8">
+
             <div class="glass mb-4">
 
-                <img src="@imagePath" class="hero-img mb-3" />
+                <img src="@imagePath"
+                     class="hero-img mb-3"
+                     alt="@partName" />
 
                 <h2>@Model.PartName</h2>
 
-                <div class="price">
+                <div class="price mb-3">
                     @price.ToString("N0") VND
                 </div>
 
-                <p>
-                    <b>Hãng:</b>
-                    @(Model.Brand?.BrandName ?? "N/A")
-                </p>
+                <div class="row">
 
-                <p>
-                    <b>Danh mục:</b>
-                    @(Model.Category?.CategoryName ?? "N/A")
-                </p>
+                    <div class="col-md-6">
+                        <div class="spec-box">
+                            <div class="spec-title">Hãng</div>
+                            <div class="spec-value">
+                                @(Model.Brand?.BrandName ?? "N/A")
+                            </div>
+                        </div>
+                    </div>
 
-                <p>
-                    <b>Bảo hành:</b>
-                    @Model.WarrantyMonths tháng
-                </p>
+                    <div class="col-md-6">
+                        <div class="spec-box">
+                            <div class="spec-title">Danh mục</div>
+                            <div class="spec-value">
+                                @(Model.Category?.CategoryName ?? "N/A")
+                            </div>
+                        </div>
+                    </div>
 
-                <p>
-                    <b>Tồn kho:</b>
-                    @Model.StockQuantity
-                </p>
+                    <div class="col-md-6">
+                        <div class="spec-box">
+                            <div class="spec-title">Bảo hành</div>
+                            <div class="spec-value">
+                                @(Model.WarrantyMonths != null
+                                    ? $"{Model.WarrantyMonths} tháng"
+                                    : "Không có")
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="spec-box">
+                            <div class="spec-title">Tồn kho</div>
+                            <div class="spec-value">
+                                @Model.StockQuantity
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
                 <hr />
 
@@ -83,6 +128,7 @@
                 </p>
 
             </div>
+
         </div>
 
         <!-- RIGHT -->
@@ -90,29 +136,42 @@
 
             <div class="glass">
 
-                <h5>Hành động</h5>
+                <h5 class="mb-3">Hành động</h5>
 
-                <form asp-controller="Cart" asp-action="AddPart" method="post">
+                <form asp-controller="Cart"
+                      asp-action="AddPart"
+                      method="post">
+
                     @Html.AntiForgeryToken()
 
-                    <input type="hidden" name="partId" value="@Model.PartId" />
+                    <input type="hidden"
+                           name="partId"
+                           value="@Model.PartId" />
 
                     <button class="btn btn-success w-100 mb-2">
                         🛒 Thêm vào giỏ hàng
                     </button>
+
                 </form>
 
-                <form asp-controller="Wishlist" asp-action="Add" method="post">
+                <form asp-controller="Wishlist"
+                      asp-action="Add"
+                      method="post">
+
                     @Html.AntiForgeryToken()
 
-                    <input type="hidden" name="partId" value="@Model.PartId" />
+                    <input type="hidden"
+                           name="partId"
+                           value="@Model.PartId" />
 
                     <button class="btn btn-outline-danger w-100 mb-2">
                         ❤️ Yêu thích
                     </button>
+
                 </form>
 
-                <a asp-action="Index" class="btn btn-secondary w-100">
+                <a asp-action="Index"
+                       class="btn btn-secondary w-100">
                     ← Quay lại
                 </a>
 
