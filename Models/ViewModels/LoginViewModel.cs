@@ -11,5 +11,7 @@ namespace MotorcycleShopMVC.Models.ViewModels
         [Required(ErrorMessage = "Vui lòng nhập mật khẩu")]
         [DataType(DataType.Password)]
         public string Password { get; set; } = string.Empty;
+
+        public bool RememberMe { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using System.Security.Claims;
 
 namespace MotorcycleShopMVC.Filters
 {
@@ -15,21 +16,78 @@ namespace MotorcycleShopMVC.Filters
 
         public void OnAuthorization(AuthorizationFilterContext context)
         {
+            // ===== SESSION =====
             var userEmail = context.HttpContext.Session.GetString("UserEmail");
             var userRole = context.HttpContext.Session.GetString("UserRole");
 
-            // Chưa đăng nhập -> về login
-            if (string.IsNullOrWhiteSpace(userEmail))
+            // ===== CLAIMS =====
+            var user = context.HttpContext.User;
+
+            // ===== CHECK LOGIN =====
+            bool sessionAuthenticated =
+                !string.IsNullOrWhiteSpace(userEmail);
+
+            bool claimsAuthenticated =
+                user?.Identity != null &&
+                user.Identity.IsAuthenticated;
+
+            // Chưa đăng nhập bằng cả 2
+            if (!sessionAuthenticated && !claimsAuthenticated)
             {
-                var returnUrl = context.HttpContext.Request.Path + context.HttpContext.Request.QueryString;
-                context.Result = new RedirectToActionResult("Login", "Account", new { returnUrl });
+                var returnUrl =
+                    context.HttpContext.Request.Path +
+                    context.HttpContext.Request.QueryString;
+
+                context.Result = new RedirectToActionResult(
+                    "Login",
+                    "Account",
+                    new { returnUrl });
+
                 return;
             }
 
-            // Có đăng nhập nhưng không đúng role
-            if (_roles.Length > 0 && (string.IsNullOrWhiteSpace(userRole) || !_roles.Contains(userRole)))
+            // ===== CHECK ROLE =====
+            if (_roles.Length > 0)
             {
-                context.Result = new ForbidResult(); // hoặc RedirectToAction("AccessDenied","Home")
+                bool hasRole = false;
+
+                // Role từ session
+                if (!string.IsNullOrWhiteSpace(userRole))
+                {
+                    hasRole = _roles.Any(r =>
+                        string.Equals(
+                            r,
+                            userRole,
+                            StringComparison.OrdinalIgnoreCase));
+                }
+
+                // Role từ claims
+                if (!hasRole && claimsAuthenticated)
+                {
+                    var roleClaim =
+                        user.FindFirst(ClaimTypes.Role)?.Value;
+
+                    if (!string.IsNullOrWhiteSpace(roleClaim))
+                    {
+                        hasRole = _roles.Any(r =>
+                            string.Equals(
+                                r,
+                                roleClaim,
+                                StringComparison.OrdinalIgnoreCase));
+                    }
+                }
+
+                // Không đúng role
+                if (!hasRole)
+                {
+                    context.Result =
+                        new RedirectToActionResult(
+                            "AccessDenied",
+                            "Account",
+                            null);
+
+                    return;
+                }
             }
         }
     }

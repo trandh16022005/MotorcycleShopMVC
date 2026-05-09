@@ -130,6 +130,9 @@ namespace MotorcycleShopMVC.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName", motorcycle.BrandId);
+            ViewData["TypeId"] = new SelectList(_context.VehicleTypes, "TypeId", "TypeName", motorcycle.TypeId);
+
 
             return View(motorcycle);
         }
