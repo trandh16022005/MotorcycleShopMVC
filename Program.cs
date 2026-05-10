@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MotorcycleShopMVC.Models;
@@ -15,6 +16,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Session
 builder.Services.AddDistributedMemoryCache();
+
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(30);
@@ -22,15 +24,61 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+// Cookie Authentication
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+    {
+        options.LoginPath = "/Account/Login";
+        options.AccessDeniedPath = "/Account/AccessDenied";
+
+        options.Cookie.HttpOnly = true;
+
+        options.ExpireTimeSpan = TimeSpan.FromDays(7);
+
+        options.SlidingExpiration = true;
+    });
+
+builder.Services.AddAuthorization();
+
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
+app.UseSession();
 
-// 🔥 👉 ĐẶT ĐOẠN SEED Ở ĐÂY (ĐÚNG CHỖ)
+app.UseAuthentication();
+
+app.UseAuthorization();
+
+//SYNC SESSION FROM COOKIE CLAIMS
+app.Use(async (context, next) =>
+{
+    if (context.User.Identity?.IsAuthenticated == true)
+    {
+        var sessionUserId = context.Session.GetString("UserId");
+
+        if (string.IsNullOrEmpty(sessionUserId))
+        {
+            var claimUserId = context.User
+                .FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?
+                .Value;
+
+            if (!string.IsNullOrEmpty(claimUserId))
+            {
+                context.Session.SetString("UserId", claimUserId);
+            }
+        }
+    }
+
+    await next();
+});
+
+
+// Seed admin
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
     var hasher = new PasswordHasher<User>();
 
     var adminEmail = "admin@gmail.com";
@@ -45,7 +93,7 @@ using (var scope = app.Services.CreateScope())
             Email = adminEmail,
             PhoneNumber = "0900000000",
             Address = "Hà Nội",
-            Role = "admin",
+            Role = "Admin",
             CreatedAt = DateTime.Now,
             UpdatedAt = DateTime.Now
         };
@@ -57,7 +105,7 @@ using (var scope = app.Services.CreateScope())
     else
     {
         user.PasswordHash = hasher.HashPassword(user, "123456");
-        user.Role = "admin";
+        user.Role = "Admin";
         user.UpdatedAt = DateTime.Now;
     }
 
@@ -77,11 +125,15 @@ else
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseSession();
+
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
