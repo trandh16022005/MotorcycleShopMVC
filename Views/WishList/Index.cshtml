@@ -36,7 +36,7 @@ else
                             <h6 class="text-danger mt-auto">@item.Motorcycle.Price.ToString("N0") VNĐ</h6>
                         </div>
                         <div class="card-footer bg-transparent border-top-0 text-center">
-                            <a asp-controller="Motorcycle" asp-action="Detail" asp-route-id="@item.MotorcycleId" class="btn btn-sm btn-outline-primary">Xem chi tiết</a>
+                            <a asp-controller="Motorcycle" asp-action="Details" asp-route-id="@item.MotorcycleId" class="btn btn-sm btn-outline-primary">Xem chi tiết</a>
                         </div>
                     }
                     else if (item.Part != null)
@@ -48,7 +48,7 @@ else
                             <h6 class="text-danger mt-auto">@item.Part.Price.ToString("N0") VNĐ</h6>
                         </div>
                         <div class="card-footer bg-transparent border-top-0 text-center">
-                            <a asp-controller="Part" asp-action="Detail" asp-route-id="@item.PartId" class="btn btn-sm btn-outline-primary">Xem chi tiết</a>
+                            <a asp-controller="Part" asp-action="Details" asp-route-id="@item.PartId" class="btn btn-sm btn-outline-primary">Xem chi tiết</a>
                         </div>
                     }
 

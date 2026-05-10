@@ -92,11 +92,11 @@ namespace MotorcycleShopMVC.Controllers
 
             // Kiểm tra đã tồn tại chưa
             var alreadyExists = await _context.Wishlists.AnyAsync(w =>
-                w.UserId == userId &&
-                (
-                    w.MotorcycleId == motorcycleId ||
-                    w.PartId == partId
-                ));
+    w.UserId == userId &&
+    (
+        (motorcycleId != null && w.MotorcycleId == motorcycleId) ||
+        (partId != null && w.PartId == partId)
+    ));
 
             if (alreadyExists)
             {
