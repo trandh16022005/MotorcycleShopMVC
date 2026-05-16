@@ -46,15 +46,33 @@ namespace MotorcycleShopMVC.Controllers
             if (!string.IsNullOrEmpty(HttpContext.Session.GetString("UserEmail")) ||
                 User.Identity?.IsAuthenticated == true)
             {
-                if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
+                if (!string.IsNullOrWhiteSpace(returnUrl) &&
+                    Url.IsLocalUrl(returnUrl))
+                {
                     return Redirect(returnUrl);
+                }
 
+                // Lấy role từ Session
+                var role = HttpContext.Session.GetString("UserRole");
+
+                // Nếu Session chưa có thì lấy từ Claims
+                if (string.IsNullOrWhiteSpace(role))
+                {
+                    role = User.Claims
+                        .FirstOrDefault(c => c.Type == ClaimTypes.Role)
+                        ?.Value;
+                }
+
+                // Admin -> Admin Dashboard
+                if (string.Equals(role, "Admin", StringComparison.OrdinalIgnoreCase))
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+
+                // Vendor/User -> Home
                 return RedirectToAction("Index", "Home");
             }
-
-            ViewBag.ReturnUrl = returnUrl;
-
-            return View(new LoginViewModel());
+            ViewBag.ReturnUrl = returnUrl; return View(new LoginViewModel());
         }
 
         // POST: /Account/Login
@@ -144,11 +162,18 @@ namespace MotorcycleShopMVC.Controllers
                 return Redirect(returnUrl);
             }
 
+            // Admin
+            if (string.Equals(user.Role, "Admin", StringComparison.OrdinalIgnoreCase))
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+
+            // Vendor / Customer
             return RedirectToAction("Index", "Home");
         }
 
-        // GET: /Account/Register
-        [HttpGet]
+            // GET: /Account/Register
+            [HttpGet]
         public IActionResult Register(string? returnUrl = null)
         {
             // Nếu chưa có returnUrl thì lấy từ Referer

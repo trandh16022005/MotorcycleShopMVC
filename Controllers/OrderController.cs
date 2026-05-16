@@ -119,7 +119,7 @@ namespace MotorcycleShopMVC.Controllers
         // ==========================================
         // 2. QUẢN LÝ ĐƠN HÀNG (Dành cho Admin/Nhân viên)
         // ==========================================
-        [RoleAuthorize("Admin")]
+        [RoleAuthorize("Vendor", "Admin")]
         public async Task<IActionResult> Manage()
         {
             // Lấy tất cả đơn hàng trong hệ thống, kèm theo thông tin User

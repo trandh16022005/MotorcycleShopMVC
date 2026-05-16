@@ -108,7 +108,7 @@ namespace MotorcycleShopMVC.Controllers
             return View(motorcycle);
         }
 
-        [RoleAuthorize("Admin")]
+        [RoleAuthorize("Vendor", "Admin")]
         public IActionResult Create()
         {
             ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName");
@@ -118,7 +118,7 @@ namespace MotorcycleShopMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [RoleAuthorize("Admin")]
+        [RoleAuthorize("Vendor", "Admin")]
         public async Task<IActionResult> Create(Motorcycle motorcycle)
         {
             if (ModelState.IsValid)
@@ -137,7 +137,7 @@ namespace MotorcycleShopMVC.Controllers
             return View(motorcycle);
         }
 
-        [RoleAuthorize("Admin")]
+        [RoleAuthorize("Vendor", "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -153,7 +153,7 @@ namespace MotorcycleShopMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [RoleAuthorize("Admin")]
+        [RoleAuthorize("Vendor", "Admin")]
         public async Task<IActionResult> Edit(int id, Motorcycle motorcycle)
         {
             if (id != motorcycle.MotorcycleId) return NotFound();
@@ -169,7 +169,7 @@ namespace MotorcycleShopMVC.Controllers
             return View(motorcycle);
         }
 
-        [RoleAuthorize("Admin")]
+        [RoleAuthorize("Vendor", "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -186,7 +186,7 @@ namespace MotorcycleShopMVC.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [RoleAuthorize("Admin")]
+        [RoleAuthorize("Vendor", "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var motorcycle = await _context.Motorcycles.FindAsync(id);

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MotorcycleShopMVC.Models;
+using System.Security.Policy;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,18 +56,40 @@ app.Use(async (context, next) =>
 {
     if (context.User.Identity?.IsAuthenticated == true)
     {
-        var sessionUserId = context.Session.GetString("UserId");
+        var claimUserId = context.User
+            .FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?
+            .Value;
 
-        if (string.IsNullOrEmpty(sessionUserId))
+        var claimRole = context.User
+            .FindFirst(System.Security.Claims.ClaimTypes.Role)?
+            .Value;
+
+        var claimEmail = context.User
+            .FindFirst(System.Security.Claims.ClaimTypes.Email)?
+            .Value;
+
+        var claimName = context.User
+            .FindFirst(System.Security.Claims.ClaimTypes.Name)?
+            .Value;
+
+        if (!string.IsNullOrEmpty(claimUserId))
         {
-            var claimUserId = context.User
-                .FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?
-                .Value;
+            context.Session.SetString("UserId", claimUserId);
+        }
 
-            if (!string.IsNullOrEmpty(claimUserId))
-            {
-                context.Session.SetString("UserId", claimUserId);
-            }
+        if (!string.IsNullOrEmpty(claimRole))
+        {
+            context.Session.SetString("UserRole", claimRole);
+        }
+
+        if (!string.IsNullOrEmpty(claimEmail))
+        {
+            context.Session.SetString("UserEmail", claimEmail);
+        }
+
+        if (!string.IsNullOrEmpty(claimName))
+        {
+            context.Session.SetString("UserFullName", claimName);
         }
     }
 
@@ -80,6 +103,18 @@ using (var scope = app.Services.CreateScope())
     var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
     var hasher = new PasswordHasher<User>();
+
+    var vendor = context.Users
+    .FirstOrDefault(u => u.Email == "trandh16022005@gmail.com");
+
+    if (vendor != null)
+    {
+        vendor.PasswordHash =
+            hasher.HashPassword(vendor, "123456");
+
+        context.SaveChanges();
+    }
+
 
     var adminEmail = "admin@gmail.com";
 

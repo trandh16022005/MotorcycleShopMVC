@@ -41,6 +41,13 @@ public class User
     [StringLength(20)]
     public string Role { get; set; } = "customer";
 
+    // =========================
+    // ADMIN USER MANAGEMENT
+    // =========================
+
+    [Column("is_active")]
+    public bool IsActive { get; set; } = true;
+
     [Column("created_at", TypeName = "datetime")]
     public DateTime? CreatedAt { get; set; }
 
@@ -51,9 +58,21 @@ public class User
     [StringLength(50)]
     public string? PaymentMethod { get; set; }
 
+    // =========================
+    // NAVIGATION
+    // =========================
+
     public virtual Cart? Cart { get; set; }
-    public virtual ICollection<Notification> Notifications { get; set; } = new List<Notification>();
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
-    public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
-    public virtual ICollection<Wishlist> Wishlists { get; set; } = new List<Wishlist>();
+
+    public virtual ICollection<Notification> Notifications { get; set; }
+        = new List<Notification>();
+
+    public virtual ICollection<Order> Orders { get; set; }
+        = new List<Order>();
+
+    public virtual ICollection<Review> Reviews { get; set; }
+        = new List<Review>();
+
+    public virtual ICollection<Wishlist> Wishlists { get; set; }
+        = new List<Wishlist>();
 }
