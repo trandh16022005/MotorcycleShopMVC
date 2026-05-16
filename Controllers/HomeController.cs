@@ -34,5 +34,9 @@ namespace MotorcycleShopMVC.Controllers
 
             return View(result);
         }
+        public IActionResult Privacy()
+        {
+            return View();
+        }
     }
 }
