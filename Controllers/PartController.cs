@@ -50,7 +50,7 @@ namespace MotorcycleShopMVC.Controllers
         }
 
         // GET: Part/Create
-        [RoleAuthorize("Admin")]
+        [RoleAuthorize("Vendor", "Admin")]
         public IActionResult Create()
         {
             ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandId");
@@ -61,7 +61,7 @@ namespace MotorcycleShopMVC.Controllers
         // POST: Part/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [RoleAuthorize("Admin")]
+        [RoleAuthorize("Vendor", "Admin")]
         public async Task<IActionResult> Create([Bind("PartId,PartName,CategoryId,BrandId,Price,StockQuantity,Description,ImagePath,WarrantyMonths,CreatedAt,UpdatedAt")] Part part)
         {
             if (ModelState.IsValid)
@@ -77,7 +77,7 @@ namespace MotorcycleShopMVC.Controllers
         }
 
         // GET: Part/Edit/5
-        [RoleAuthorize("Admin")]
+        [RoleAuthorize("Vendor", "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -99,7 +99,7 @@ namespace MotorcycleShopMVC.Controllers
         // POST: Part/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [RoleAuthorize("Admin")]
+        [RoleAuthorize("Vendor", "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("PartId,PartName,CategoryId,BrandId,Price,StockQuantity,Description,ImagePath,WarrantyMonths,CreatedAt,UpdatedAt")] Part part)
         {
             if (id != part.PartId)
@@ -134,7 +134,7 @@ namespace MotorcycleShopMVC.Controllers
         }
 
         // GET: Part/Delete/5
-        [RoleAuthorize("Admin")]
+        [RoleAuthorize("Vendor", "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -158,7 +158,7 @@ namespace MotorcycleShopMVC.Controllers
         // POST: Part/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [RoleAuthorize("Admin")]
+        [RoleAuthorize("Vendor", "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var part = await _context.Parts.FindAsync(id);
