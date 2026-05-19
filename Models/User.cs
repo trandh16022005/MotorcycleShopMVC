@@ -54,9 +54,22 @@ public class User
     [Column("updated_at", TypeName = "datetime")]
     public DateTime? UpdatedAt { get; set; }
 
-    [Column("payment_method")]
-    [StringLength(50)]
-    public string? PaymentMethod { get; set; }
+    [Column("gender")]
+    [StringLength(10)]
+    public string? Gender { get; set; }
+
+    [Column("birth_day")]
+    public int? BirthDay { get; set; }
+
+    [Column("birth_month")]
+    public int? BirthMonth { get; set; }
+
+    [Column("birth_year")]
+    public int? BirthYear { get; set; }
+
+    [Column("avatar_path")]
+    [StringLength(255)]
+    public string? AvatarPath { get; set; }
 
     // =========================
     // NAVIGATION

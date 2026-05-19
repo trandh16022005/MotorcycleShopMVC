@@ -1,0 +1,426 @@
+﻿@model MotorcycleShopMVC.Models.ViewModels.UserProfileViewModel
+@{
+    ViewData["Title"] = "Tài khoản của tôi";
+    var avatar = string.IsNullOrWhiteSpace(Model.AvatarPath) ? "/images/default-avatar.png" : Model.AvatarPath;
+}
+
+<style>
+    .profile-wrap {
+        padding: 2rem 0;
+    }
+
+    .profile-header {
+        margin-bottom: 1.75rem;
+    }
+
+        .profile-header h2 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .profile-header p {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+    .profile-grid {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 1.75rem;
+        align-items: start;
+    }
+
+    .avatar-card {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 2rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.875rem;
+        text-align: center;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    .avatar-ring {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        border: 3px solid #e5e7eb;
+        overflow: hidden;
+        background: #f3f4f6;
+    }
+
+        .avatar-ring img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .avatar-name {
+        font-size: 16px;
+        font-weight: 600;
+        color: #111827;
+    }
+
+    .avatar-email {
+        font-size: 13px;
+        color: #9ca3af;
+        margin-top: 2px;
+    }
+
+    .member-badge {
+        display: inline-block;
+        padding: 3px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+        background: #fef2f2;
+        color: #dc2626;
+    }
+
+    .btn-avatar {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        border-radius: 8px;
+        border: 1px solid #d1d5db;
+        background: #f9fafb;
+        color: #374151;
+        font-size: 13px;
+        cursor: pointer;
+        transition: background 0.15s, border-color 0.15s;
+    }
+
+        .btn-avatar:hover {
+            background: #f3f4f6;
+            border-color: #9ca3af;
+        }
+
+    .avatar-hint {
+        font-size: 12px;
+        color: #9ca3af;
+    }
+
+    .form-card {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 1.75rem 2rem;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    .section-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #9ca3af;
+        margin-bottom: 1.25rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #f3f4f6;
+    }
+
+    .field-row {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        align-items: start;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .field-label {
+        font-size: 14px;
+        color: #6b7280;
+        padding-top: 9px;
+    }
+
+    .prof-input {
+        width: 100%;
+        padding: 8px 12px;
+        font-size: 14px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        background: #fff;
+        color: #111827;
+        outline: none;
+        transition: border-color 0.15s, box-shadow 0.15s;
+        box-sizing: border-box;
+    }
+
+        .prof-input:focus {
+            border-color: #dc2626;
+            box-shadow: 0 0 0 3px rgba(220,38,38,0.08);
+        }
+
+        .prof-input:disabled {
+            background: #f9fafb;
+            color: #9ca3af;
+            cursor: not-allowed;
+        }
+
+    .input-hint {
+        font-size: 12px;
+        color: #9ca3af;
+        margin-top: 5px;
+        display: block;
+    }
+
+    .radio-group {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+        padding-top: 9px;
+    }
+
+    .radio-label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        color: #374151;
+        cursor: pointer;
+    }
+
+        .radio-label input[type=radio] {
+            accent-color: #dc2626;
+            width: 15px;
+            height: 15px;
+        }
+
+    .dob-row {
+        display: flex;
+        gap: 8px;
+    }
+
+        .dob-row .prof-input {
+            flex: 1;
+            min-width: 0;
+        }
+
+    .section-divider {
+        height: 1px;
+        background: #f3f4f6;
+        margin: 1.5rem 0;
+    }
+
+    .btn-save {
+        padding: 10px 28px;
+        border-radius: 8px;
+        background: #dc2626;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+        border: none;
+        cursor: pointer;
+        transition: background 0.15s;
+    }
+
+        .btn-save:hover {
+            background: #b91c1c;
+        }
+
+    .btn-cancel {
+        padding: 10px 20px;
+        border-radius: 8px;
+        background: transparent;
+        color: #6b7280;
+        font-size: 14px;
+        border: 1px solid #d1d5db;
+        cursor: pointer;
+        margin-left: 8px;
+        transition: background 0.15s;
+    }
+
+        .btn-cancel:hover {
+            background: #f9fafb;
+        }
+
+    @@media (max-width: 768px) {
+        .profile-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .field-row {
+            grid-template-columns: 1fr;
+            gap: 0.25rem;
+        }
+
+        .field-label {
+            padding-top: 0;
+        }
+    }
+</style>
+
+<div class="profile-wrap">
+    <div class="profile-header">
+        <h2>Hồ sơ của tôi</h2>
+        <p>Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
+    </div>
+
+    <div class="profile-grid">
+
+        <div class="avatar-card">
+            <div class="avatar-ring">
+                <img id="avatarPreview" src="@avatar" alt="Avatar" />
+            </div>
+
+            <div>
+                <div class="avatar-name">@Model.FullName</div>
+                <div class="avatar-email">@Model.Email</div>
+            </div>
+
+            <span class="member-badge">Thành viên</span>
+
+            <button type="button" class="btn-avatar" id="chooseAvatarBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                    <circle cx="12" cy="13" r="4" />
+                </svg>
+                Đổi ảnh đại diện
+            </button>
+
+            <span class="avatar-hint">JPG, JPEG, PNG &bull; Tối đa 1MB</span>
+        </div>
+
+        <div>
+            <form asp-action="Profile" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+
+                <div class="form-card">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="section-label">Thông tin cơ bản</div>          
+
+                    <div class="field-row">
+                        <label class="field-label">Họ và tên</label>
+                        <div>
+                            <input asp-for="FullName" class="prof-input" placeholder="Nhập họ và tên" />
+                            <span asp-validation-for="FullName" class="input-hint" style="color:#dc2626;"></span>
+                        </div>
+                    </div>
+
+                    <div class="field-row">
+                        <label class="field-label">Email</label>
+                        <div>
+                            <input class="prof-input" value="@Model.Email" disabled />
+                        </div>
+                    </div>
+
+                    <div class="section-divider"></div>
+                    <div class="section-label">Thông tin liên hệ</div>
+
+                    <div class="field-row">
+                        <label class="field-label">Số điện thoại</label>
+                        <div>
+                            <input asp-for="PhoneNumber" class="prof-input" placeholder="Nhập số điện thoại" />
+                            <span asp-validation-for="PhoneNumber" class="input-hint" style="color:#dc2626;"></span>
+                        </div>
+                    </div>
+
+                    <div class="field-row">
+                        <label class="field-label">Địa chỉ</label>
+                        <div>
+                            <input asp-for="Address" class="prof-input" placeholder="Nhập địa chỉ" />
+                            <span asp-validation-for="Address" class="input-hint" style="color:#dc2626;"></span>
+                        </div>
+                    </div>
+
+                    <div class="section-divider"></div>
+                    <div class="section-label">Thông tin cá nhân</div>
+
+                    <div class="field-row">
+                        <label class="field-label">Giới tính</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" asp-for="Gender" value="Nam" /> Nam
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" asp-for="Gender" value="Nữ" /> Nữ
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" asp-for="Gender" value="Khác" /> Khác
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="field-row">
+                        <label class="field-label">Ngày sinh</label>
+                        <div class="dob-row">
+                            <input asp-for="BirthDay" class="prof-input" type="number" placeholder="Ngày" min="1" max="31" />
+                            <input asp-for="BirthMonth" class="prof-input" type="number" placeholder="Tháng" min="1" max="12" />
+                            <input asp-for="BirthYear" class="prof-input" type="number" placeholder="Năm" min="1900" max="2099" />
+                        </div>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <input type="file"
+                           id="avatarInput"
+                           asp-for="AvatarFile"
+                           accept=".jpg,.jpeg,.png,image/jpeg,image/png"
+                           style="display:none;" />
+
+                    <span asp-validation-for="AvatarFile" class="input-hint" style="color:#dc2626;"></span>
+
+                    <div>
+                        <button type="submit" class="btn-save">Lưu thay đổi</button>
+                        <button type="button" class="btn-cancel" onclick="history.back()">Hủy</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        const chooseAvatarBtn = document.getElementById("chooseAvatarBtn");
+        const avatarInput = document.getElementById("avatarInput");
+        const avatarPreview = document.getElementById("avatarPreview");
+
+        const allowedTypes = ["image/jpeg", "image/png"];
+        const maxSize = 1 * 1024 * 1024; // 1MB
+        const defaultAvatar = "/images/default-avatar.png";
+
+        chooseAvatarBtn.addEventListener("click", function () {
+            avatarInput.click();
+        });
+
+        avatarInput.addEventListener("change", function () {
+            const file = this.files[0];
+            if (!file) return;
+
+            if (!allowedTypes.includes(file.type)) {
+                alert("Chỉ chấp nhận file JPG, JPEG hoặc PNG.");
+                this.value = "";
+                avatarPreview.src = defaultAvatar;
+                return;
+            }
+
+            if (file.size > maxSize) {
+                alert("Ảnh không được vượt quá 1MB.");
+                this.value = "";
+                avatarPreview.src = defaultAvatar;
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                avatarPreview.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
+}

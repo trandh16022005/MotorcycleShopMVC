@@ -104,16 +104,16 @@ using (var scope = app.Services.CreateScope())
 
     var hasher = new PasswordHasher<User>();
 
-    var vendor = context.Users
-    .FirstOrDefault(u => u.Email == "trandh16022005@gmail.com");
+    //var vendor = context.Users
+    //.FirstOrDefault(u => u.Email == "trandh16022005@gmail.com");
 
-    if (vendor != null)
-    {
-        vendor.PasswordHash =
-            hasher.HashPassword(vendor, "123456");
+    //if (vendor != null)
+    //{
+    //    vendor.PasswordHash =
+    //        hasher.HashPassword(vendor, "123456");
 
-        context.SaveChanges();
-    }
+    //    context.SaveChanges();
+    //}
 
 
     var adminEmail = "admin@gmail.com";
@@ -177,3 +177,5 @@ app.MapControllerRoute(
 );
 
 app.Run();
+
+//new

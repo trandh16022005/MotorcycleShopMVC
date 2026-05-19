@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MotorcycleShopMVC.Filters;
 using MotorcycleShopMVC.Models;
 using MotorcycleShopMVC.Models.ViewModels;
-using MotorcycleShopMVC.Filters;
-using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace MotorcycleShopMVC.Controllers
 {
@@ -19,7 +20,8 @@ namespace MotorcycleShopMVC.Controllers
 
         private int GetUserId()
         {
-            var userIdStr = HttpContext.Session.GetString("UserId");
+            //var userIdStr = HttpContext.Session.GetString("UserId");
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
             return int.TryParse(userIdStr, out var userId) ? userId : 0;
         }
 
@@ -104,21 +106,52 @@ namespace MotorcycleShopMVC.Controllers
         // ==========================================
         // 1. LỊCH SỬ ĐƠN HÀNG (Dành cho Khách hàng)
         // ==========================================
-        public async Task<IActionResult> History()
+        public async Task<IActionResult> History(string? tab = "all")
         {
             var userId = GetUserId();
             // Lấy danh sách đơn hàng của user đang đăng nhập
-            var orders = await _context.Orders
-                .Where(o => o.UserId == userId)
+            var query = _context.Orders
+                .Where(o => o.UserId == userId);
+
+            switch (tab)
+            {
+                case "pending":
+                    query = query.Where(o => o.Status == "pending");
+                    break;
+
+                case "completed":
+                    query = query.Where(o => o.Status == "completed");
+                    break;
+
+                case "cancelled":
+                    query = query.Where(o => o.Status == "cancelled" || o.Status == "canceled");
+                    break;
+            }
+
+            var orders = await query
                 .OrderByDescending(o => o.OrderDate)
                 .ToListAsync();
 
+            ViewBag.CurrentTab = tab ?? "all";
             return View(orders);
         }
 
-        // ==========================================
+        //1. CHI TIẾT ĐƠN HÀNG(Dành cho Khách hàng)
+        public async Task<IActionResult> Details(int id)
+        {
+            var userId = GetUserId();
+
+            var order = await _context.Orders
+                .Include(o => o.OrderItems).ThenInclude(oi => oi.Motorcycle)
+                .Include(o => o.OrderItems).ThenInclude(oi => oi.Part)
+                .FirstOrDefaultAsync(o => o.OrderId == id && o.UserId == userId);
+
+            if (order == null) return NotFound();
+
+            return View(order);
+        }
+
         // 2. QUẢN LÝ ĐƠN HÀNG (Dành cho Admin/Nhân viên)
-        // ==========================================
         [RoleAuthorize("Vendor", "Admin")]
         public async Task<IActionResult> Manage()
         {

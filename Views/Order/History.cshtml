@@ -2,15 +2,23 @@
 
 @{
     ViewData["Title"] = "Lịch sử đơn hàng";
+    var tab = ViewBag.CurrentTab as string ?? "all";
 }
 
 <div class="container mt-4">
     <h2 class="mb-4">Lịch sử đơn hàng của bạn</h2>
 
+    <ul class="nav nav-tabs mb-3">
+        <li class="nav-item"><a class="nav-link @(tab == "all" ? "active" : "")" asp-action="History" asp-route-tab="all">Tất cả</a></li>
+        <li class="nav-item"><a class="nav-link @(tab == "pending" ? "active" : "")" asp-action="History" asp-route-tab="pending">Chờ xử lý</a></li>
+        <li class="nav-item"><a class="nav-link @(tab == "completed" ? "active" : "")" asp-action="History" asp-route-tab="completed">Hoàn thành</a></li>
+        <li class="nav-item"><a class="nav-link @(tab == "cancelled" ? "active" : "")" asp-action="History" asp-route-tab="cancelled">Đã hủy</a></li>
+    </ul>
+
     @if (!Model.Any())
     {
         <div class="alert alert-info">
-            Bạn chưa có đơn hàng nào. <a asp-controller="Motorcycle" asp-action="Index">Mua sắm ngay!</a>
+            Bạn chưa có đơn hàng nào tại đây. 
         </div>
     }
     else
@@ -22,9 +30,9 @@
                         <th>Mã đơn</th>
                         <th>Ngày đặt</th>
                         <th>Địa chỉ giao</th>
-                        <th>Tổng tiền</th>
-                        <th>Trạng thái ĐH</th>
+                        <th>Tổng tiền</th>                        
                         <th>Thanh toán</th>
+                        <th>Xem</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,28 +42,7 @@
                             <td class="text-center fw-bold">#@item.OrderId</td>
                             <td class="text-center">@item.OrderDate?.ToString("dd/MM/yyyy HH:mm")</td>
                             <td>@item.ShippingAddress</td>
-                            <td class="text-danger text-end fw-bold">@item.TotalAmount.ToString("N0") đ</td>
-                            <td class="text-center">
-                                @if (item.Status == "pending")
-                                {
-                                    <span class="badge bg-warning text-dark">Chờ xử lý</span>
-                                }
-                                else if (item.Status == "processing")
-                                {
-
-                                    <span class="badge bg-primary">Đang giao</span>
-                                }
-                                else if (item.Status == "completed")
-                                {
-
-                                    <span class="badge bg-success">Hoàn thành</span>
-                                }
-                                else
-                                {
-
-                                    <span class="badge bg-secondary">@item.Status</span>
-                                }
-                            </td>
+                            <td class="text-danger text-end fw-bold">@item.TotalAmount.ToString("N0") đ</td>                          
                             <td class="text-center">
                                 @if (item.PaymentStatus == "unpaid")
                                 {
@@ -71,6 +58,11 @@
 
                                     <span class="badge bg-secondary">@item.PaymentStatus</span>
                                 }
+                            </td>
+                            <td class="text-center">
+                                <a asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-sm btn-primary">
+                                    Xem chi tiết
+                                </a>
                             </td>
                         </tr>
                     }
