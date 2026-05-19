@@ -22,78 +22,77 @@
 
     @using System.Security.Claims
 
-@{
-        // =========================
-        // CLAIMS (PRIMARY SOURCE)
-        // =========================
+    @{
+            // =========================
+            // CLAIMS (PRIMARY SOURCE)
+            // =========================
 
-        var claimUserEmail =
-            User.FindFirstValue(ClaimTypes.Email);
+            var claimUserEmail =
+                User.FindFirstValue(ClaimTypes.Email);
 
-        var claimUserFullName =
-            User.FindFirstValue(ClaimTypes.Name);
+            var claimUserFullName =
+                User.FindFirstValue(ClaimTypes.Name);
 
-        var claimUserRole =
-            User.FindFirstValue(ClaimTypes.Role);
+            var claimUserRole =
+                User.FindFirstValue(ClaimTypes.Role);
 
-        // =========================
-        // SESSION (FALLBACK ONLY)
-        // =========================
+            // =========================
+            // SESSION (FALLBACK ONLY)
+            // =========================
 
-        var sessionUserEmail =
-            Context.Session.GetString("UserEmail");
+            var sessionUserEmail =
+                Context.Session.GetString("UserEmail");
 
-        var sessionUserFullName =
-            Context.Session.GetString("UserFullName");
+            var sessionUserFullName =
+                Context.Session.GetString("UserFullName");
 
-        var sessionUserRole =
-            Context.Session.GetString("UserRole");
+            var sessionUserRole =
+                Context.Session.GetString("UserRole");
 
-        // =========================
-        // SYNC SESSION FROM CLAIMS
-        // =========================
+            // =========================
+            // SYNC SESSION FROM CLAIMS
+            // =========================
 
-        if (User.Identity?.IsAuthenticated == true)
-        {
-            Context.Session.SetString(
-                "UserEmail",
-                claimUserEmail ?? "");
+            if (User.Identity?.IsAuthenticated == true)
+            {
+                Context.Session.SetString(
+                    "UserEmail",
+                    claimUserEmail ?? "");
 
-            Context.Session.SetString(
-                "UserFullName",
-                claimUserFullName ?? "");
+                Context.Session.SetString(
+                    "UserFullName",
+                    claimUserFullName ?? "");
 
-            Context.Session.SetString(
-                "UserRole",
-                claimUserRole ?? "");
-        }
+                Context.Session.SetString(
+                    "UserRole",
+                    claimUserRole ?? "");
+            }
 
-        // =========================
-        // FINAL VALUES
-        // =========================
+            // =========================
+            // FINAL VALUES
+            // =========================
 
-        var userEmail =
-            !string.IsNullOrWhiteSpace(claimUserEmail)
-                ? claimUserEmail
-                : sessionUserEmail;
+            var userEmail =
+                !string.IsNullOrWhiteSpace(claimUserEmail)
+                    ? claimUserEmail
+                    : sessionUserEmail;
 
-        var userFullName =
-            !string.IsNullOrWhiteSpace(claimUserFullName)
-                ? claimUserFullName
-                : sessionUserFullName;
+            var userFullName =
+                !string.IsNullOrWhiteSpace(claimUserFullName)
+                    ? claimUserFullName
+                    : sessionUserFullName;
 
-        var userRole =
-            !string.IsNullOrWhiteSpace(claimUserRole)
-                ? claimUserRole
-                : sessionUserRole;
+            var userRole =
+                !string.IsNullOrWhiteSpace(claimUserRole)
+                    ? claimUserRole
+                    : sessionUserRole;
 
-        // =========================
-        // AUTH FLAGS
-        // =========================
+            // =========================
+            // AUTH FLAGS
+            // =========================
 
-        bool isLoggedIn =
-            User.Identity?.IsAuthenticated == true ||
-            !string.IsNullOrWhiteSpace(userEmail);
+        bool isLoggedIn =User.Identity?.IsAuthenticated == true ||
+                            !string.IsNullOrWhiteSpace(userEmail);
 
         bool isAdmin =
             string.Equals(
@@ -206,8 +205,8 @@
 
                             <li class="nav-item">
                                 <a class="nav-link"
-                                   asp-controller="Support"
-                                   asp-action="Index">
+                                       asp-controller="Support"
+                                       asp-action="Index">
                                     Hỗ trợ
                                 </a>
                             </li>
@@ -251,9 +250,6 @@
 
                         @if (isLoggedIn)
                         {
-                            <!-- ========================= -->
-                            <!-- CART (NOT ADMIN)
-                            <!-- ========================= -->
                             @if (!isAdmin)
                             {
                                 <a class="nav-link text-white position-relative d-inline-block pe-3 me-3"
@@ -267,6 +263,7 @@
                                         0
                                     </span>
                                 </a>
+                                
                             }
 
                             <!-- USER INFO -->
@@ -299,39 +296,44 @@
                                 }
 
                             </span>
+                            <div class="dropdown me-2">
+                                <button class="btn btn-outline-light btn-sm dropdown-toggle d-flex align-items-center gap-1"
+                                        type="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                    <span style="font-size:18px;">🙋‍♂️</span>
+                                </button>
+
+                                <ul class="dropdown-menu dropdown-menu-end shadow">
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="User" asp-action="Profile">
+                                            Tài khoản của tôi
+                                        </a>
+                                    </li>
+                                    @if(!isAdmin)
+                                    {
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Order" asp-action="History">
+                                            Đơn mua
+                                        </a>
+                                    </li>
+                                    }
+                                        
+                                    
+                                </ul>
+                            </div>
 
                             <!-- LOGOUT -->
 
-                            <form asp-controller="Account"
-                                  asp-action="Logout"
-                                  method="post"
-                                  class="d-inline">
-
+                            <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
                                 @Html.AntiForgeryToken()
-
-                                <button type="submit"
-                                        class="btn btn-outline-light btn-sm">
-                                    Đăng xuất
-                                </button>
-                            </form>
+                                <button type="submit" class="btn btn-outline-light btn-sm">Đăng xuất</button>
+                            </form> 
                         }
                         else
                         {
-                            <!-- LOGIN -->
-
-                            <a class="btn btn-outline-light btn-sm"
-                                   asp-controller="Account"
-                                   asp-action="Login">
-                                Đăng nhập
-                            </a>
-
-                            <!-- REGISTER -->
-
-                            <a class="btn btn-light btn-sm ms-2"
-                                   asp-controller="Account"
-                                   asp-action="Register">
-                                Đăng ký
-                            </a>
+                            <a class="btn btn-outline-light btn-sm" asp-controller="Account" asp-action="Login">Đăng nhập</a>
+                            <a class="btn btn-light btn-sm ms-2" asp-controller="Account" asp-action="Register">Đăng ký</a>
                         }
 
                     </div>
@@ -350,26 +352,19 @@
 
         <main role="main"
               class="pb-3">
-
             @RenderBody()
-
         </main>
-
     </div>
 
     <!-- FOOTER -->
 
     <footer class="border-top footer text-muted mt-4">
-
         <div class="container py-2">
-
             &copy; 2026 - MotorcycleShopMVC -
-
             <a asp-controller="Home"
-                   asp-action="Privacy">
+                  asp-action="Privacy">
                 Privacy & Support
             </a>
-
         </div>
 
     </footer>
@@ -421,3 +416,5 @@
 
 </body>
 </html>
+
+

@@ -124,12 +124,12 @@ namespace MotorcycleShopMVC.Controllers
                 {
                     CartId = cart.CartId,
                     MotorcycleId = motorcycleId,
-                    Quantity = quantity
+                    Quantity = 1
                 });
             }
             else
             {
-                item.Quantity += quantity;
+                item.Quantity += 1;
             }
 
             cart.UpdatedAt = DateTime.Now;
@@ -183,7 +183,7 @@ namespace MotorcycleShopMVC.Controllers
 
             if (existing != null)
             {
-                existing.Quantity += quantity;
+                existing.Quantity += 1;
             }
             else
             {
@@ -192,7 +192,7 @@ namespace MotorcycleShopMVC.Controllers
                     CartId = cart.CartId,
                     MotorcycleId = null,
                     PartId = partId,
-                    Quantity = quantity
+                    Quantity = 1
                 });
             }
 
