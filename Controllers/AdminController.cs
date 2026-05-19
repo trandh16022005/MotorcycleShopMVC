@@ -203,8 +203,29 @@ namespace MotorcycleShopMVC.Controllers
         // REVENUE
         // =========================
 
-        public IActionResult Revenue()
+        // REVENUE ANALYTICS
+        public async Task<IActionResult> Revenue()
         {
+            var revenueData = await _context.Orders
+                .Where(o => o.Status == "Completed")
+                .GroupBy(o => o.CreatedAt!.Value.Month)
+                .Select(g => new
+                {
+                    Month = g.Key,
+                    Revenue = g.Sum(x => x.TotalAmount)
+                })
+                .OrderBy(x => x.Month)
+                .ToListAsync();
+
+            ViewBag.Months =
+                revenueData.Select(x => "Tháng " + x.Month).ToList();
+
+            ViewBag.Revenues =
+                revenueData.Select(x => x.Revenue).ToList();
+
+            ViewBag.TotalRevenue =
+                revenueData.Sum(x => x.Revenue);
+
             return View();
         }
     }
