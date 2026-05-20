@@ -33,5 +33,9 @@ namespace MotorcycleShopMVC.Models.ViewModels
         [Compare("Password", ErrorMessage = "Xác nhận mật khẩu không khớp")]
         [Display(Name = "Xác nhận mật khẩu")]
         public string ConfirmPassword { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Vui lòng chọn vai trò.")]
+        [RegularExpression("^(customer|vendor)$", ErrorMessage = "Vai trò không hợp lệ.")]
+        public string Role { get; set; } = "customer";
     }
 }

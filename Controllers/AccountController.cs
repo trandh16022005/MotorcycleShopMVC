@@ -172,8 +172,8 @@ namespace MotorcycleShopMVC.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-            // GET: /Account/Register
-            [HttpGet]
+        // GET: /Account/Register
+        [HttpGet]
         public IActionResult Register(string? returnUrl = null)
         {
             // Nếu chưa có returnUrl thì lấy từ Referer
@@ -210,7 +210,8 @@ namespace MotorcycleShopMVC.Controllers
 
             ViewBag.ReturnUrl = returnUrl;
 
-            return View(new RegisterViewModel());
+            // Mặc định role là Customer (Người mua)
+            return View(new RegisterViewModel { Role = "customer" });
         }
 
         // POST: /Account/Register
@@ -225,6 +226,11 @@ namespace MotorcycleShopMVC.Controllers
                 ViewBag.ReturnUrl = returnUrl;
                 return View(model);
             }
+
+            // VALIDATE ROLE SERVER-SIDE (chỉ cho phép customer hoặc vendor)
+            var normalizedRole = string.Equals(model.Role, "vendor")
+                ? "vendor"
+                : "customer"; // default to customer for any other value (defensive)
 
             // =========================
             // PASSWORD STRENGTH
@@ -292,7 +298,7 @@ namespace MotorcycleShopMVC.Controllers
                     ? null
                     : model.Address,
 
-                Role = "Customer",
+                Role = normalizedRole,
                 CreatedAt = DateTime.Now,
                 UpdatedAt = DateTime.Now
             };
@@ -322,7 +328,7 @@ namespace MotorcycleShopMVC.Controllers
 
                 new Claim(
                     ClaimTypes.Role,
-                    user.Role ?? "Customer")
+                    user.Role ?? "customer")
             };
 
             var identity = new ClaimsIdentity(
@@ -347,7 +353,7 @@ namespace MotorcycleShopMVC.Controllers
             HttpContext.Session.SetString("UserId", user.Id.ToString());
             HttpContext.Session.SetString("UserEmail", user.Email);
             HttpContext.Session.SetString("UserFullName", user.FullName ?? "");
-            HttpContext.Session.SetString("UserRole", user.Role ?? "Customer");
+            HttpContext.Session.SetString("UserRole", user.Role ?? "customer");
 
             // Quay lại trang cũ
             if (!string.IsNullOrWhiteSpace(returnUrl) &&

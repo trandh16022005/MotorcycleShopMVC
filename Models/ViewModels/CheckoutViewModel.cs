@@ -13,5 +13,7 @@ namespace MotorcycleShopMVC.Models.ViewModels
 
         [Required(ErrorMessage = "Vui lòng chọn phương thức thanh toán")]
         public string PaymentMethod { get; set; } = "COD";
+
+        public List<int> SelectedCartItemIds { get; set; } = new();
     }
 }
