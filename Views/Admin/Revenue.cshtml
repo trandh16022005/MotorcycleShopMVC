@@ -1,0 +1,105 @@
+﻿@using System.Text.Json
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Phân tích doanh thu";
+
+    var monthsJson =
+        JsonSerializer.Serialize(ViewBag.Months);
+
+    var revenuesJson =
+        JsonSerializer.Serialize(ViewBag.Revenues);
+}
+
+<div class="container-fluid">
+
+    <h1 class="fw-bold mb-4">
+        Phân tích doanh thu
+    </h1>
+
+    <div class="row mb-4">
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <h5 class="text-muted">
+                        Tổng doanh thu
+                    </h5>
+
+                    <h2 class="fw-bold text-success">
+                        @String.Format("{0:N0} VNĐ", ViewBag.TotalRevenue)
+                    </h2>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card shadow-sm border-0">
+
+        <div class="card-body">
+
+            <h4 class="mb-4">
+                Biểu đồ doanh thu theo tháng
+            </h4>
+
+            <canvas id="revenueChart" height="100"></canvas>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+
+        const months = @Html.Raw(monthsJson);
+
+        const revenues = @Html.Raw(revenuesJson);
+
+        const ctx =
+        document.getElementById('revenueChart');
+
+        new Chart(ctx, {
+
+        type: 'bar',
+
+        data: {
+
+        labels: months,
+
+        datasets: [{
+
+        label: 'Doanh thu (VNĐ)',
+
+        data: revenues,
+
+        borderWidth: 1
+
+        }]
+        },
+
+        options: {
+
+        responsive: true,
+
+        scales: {
+
+        y: {
+
+        beginAtZero: true
+        }
+        }
+        }
+        });
+
+    </script>
+}

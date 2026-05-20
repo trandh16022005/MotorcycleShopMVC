@@ -38,7 +38,9 @@
         <div class="card shadow-sm">
             <div class="card-body">
                 <h5>Total Revenue</h5>
-                <h2>$@Model.TotalRevenue</h2>
+                <h2>
+                    @String.Format("{0:N0} VNĐ", Model.TotalRevenue)
+                </h2>
             </div>
         </div>
     </div>
