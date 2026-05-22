@@ -20,29 +20,46 @@ namespace MotorcycleShopMVC.Controllers
 
         private int GetUserId()
         {
-            //var userIdStr = HttpContext.Session.GetString("UserId");
             var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
             return int.TryParse(userIdStr, out var userId) ? userId : 0;
         }
 
         // Hiển thị trang thanh toán
-        public async Task<IActionResult> Checkout()
+        public async Task<IActionResult> Checkout([FromQuery] List<int>? selectedItemIds)
         {
-            var userId = GetUserId();
-            var cart = await _context.Carts
-                .Include(c => c.CartItems).ThenInclude(ci => ci.Motorcycle)
-                .Include(c => c.CartItems).ThenInclude(ci => ci.Part)
-                .FirstOrDefaultAsync(c => c.UserId == userId);
-
+            var userID = GetUserId();
+            var cart=await _context.Carts
+                .Include(c => c.CartItems).ThenInclude(ci=>ci.Motorcycle)
+                .Include(c=>c.CartItems).ThenInclude(ci => ci.Part)
+                .FirstOrDefaultAsync(c => c.UserId == userID);
             if (cart == null || !cart.CartItems.Any())
+            {
                 return RedirectToAction("Index", "Cart");
+            }
+
+            List<CartItem> itemsToCheckout;
+            if(selectedItemIds!=null && selectedItemIds.Any())
+            {
+                itemsToCheckout = cart.CartItems
+                    .Where(ci=>selectedItemIds.Contains(ci.CartItemId))
+                    .ToList();
+                if (!itemsToCheckout.Any())
+                {
+                    TempData["Error"] = "Không có mục nào hợp lệ được chọn để thanh toán.";
+                    return RedirectToAction("Index", "Cart");
+                }
+            }
+            else
+            {
+                itemsToCheckout = cart.CartItems.ToList();
+            }
 
             var model = new CheckoutViewModel
             {
-                CartItems = cart.CartItems.ToList(),
-                TotalAmount = cart.CartItems.Sum(i => i.Quantity * (i.Motorcycle?.Price ?? i.Part?.Price ?? 0))
+                CartItems = itemsToCheckout,
+                TotalAmount = itemsToCheckout.Sum(i => i.Quantity * ((i.Motorcycle != null ? i.Motorcycle.Price : 0m) + (i.Part != null ? i.Part.Price : 0m))),
+                SelectedCartItemIds = itemsToCheckout.Select(ci => ci.CartItemId).ToList()
             };
-
             return View(model);
         }
 
@@ -56,17 +73,25 @@ namespace MotorcycleShopMVC.Controllers
                 .Include(c => c.CartItems).ThenInclude(ci => ci.Motorcycle)
                 .Include(c => c.CartItems).ThenInclude(ci => ci.Part)
                 .FirstOrDefaultAsync(c => c.UserId == userId);
-
             if (cart == null || !cart.CartItems.Any()) return RedirectToAction("Index", "Home");
 
-            // Tạo Order
+            var selectedIds = model.SelectedCartItemIds ?? new List<int>();
+            var itemsToCreateOrderFrom = cart.CartItems.Where(c => selectedIds.Contains(c.CartItemId)).ToList();
+
+            if (!itemsToCreateOrderFrom.Any())
+            {
+                TempData["Error"] = "Không có mục nào được chọn để tạo đơn.";
+                return RedirectToAction("Index", "Cart");
+            }
+
+            //Tao Order
             var order = new Order
             {
                 UserId = userId,
                 OrderDate = DateTime.Now,
                 ShippingAddress = model.ShippingAddress,
                 PaymentMethod = model.PaymentMethod,
-                TotalAmount = cart.CartItems.Sum(i => i.Quantity * (i.Motorcycle?.Price ?? i.Part?.Price ?? 0)),
+                TotalAmount = itemsToCreateOrderFrom.Sum(i => i.Quantity * (i.Motorcycle?.Price ?? i.Part?.Price ?? 0)),
                 Status = "pending",
                 PaymentStatus = "Pending",
                 CreatedAt = DateTime.Now,
@@ -76,8 +101,8 @@ namespace MotorcycleShopMVC.Controllers
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
 
-            // Tạo các OrderItem
-            foreach (var item in cart.CartItems)
+            // Tạo các OrderItem chỉ cho những mục đã chọn
+            foreach (var item in itemsToCreateOrderFrom)
             {
                 var orderItem = new OrderItem
                 {
@@ -90,8 +115,8 @@ namespace MotorcycleShopMVC.Controllers
                 _context.OrderItems.Add(orderItem);
             }
 
-            // Xóa giỏ hàng
-            _context.CartItems.RemoveRange(cart.CartItems);
+            //Xoa khoi Cart chi nhung CartItem da duoc tao don
+            _context.CartItems.RemoveRange(itemsToCreateOrderFrom);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Success", new { id = order.OrderId });

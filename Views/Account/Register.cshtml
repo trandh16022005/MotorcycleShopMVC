@@ -1,4 +1,5 @@
-﻿@model MotorcycleShopMVC.Models.ViewModels.RegisterViewModel
+﻿
+@model MotorcycleShopMVC.Models.ViewModels.RegisterViewModel
 @{
     ViewData["Title"] = "Đăng ký";
 }
@@ -10,7 +11,7 @@
                 <h2 class="fw-bold mb-2">Create your account</h2>
                 <p class="text-muted mb-4">Join MotorcycleShop and start exploring bikes today.</p>
 
-                <form asp-action="Register" method="post" novalidate>                  
+                <form asp-action="Register" method="post" novalidate>
                     @Html.AntiForgeryToken()
                     <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
 
@@ -49,10 +50,10 @@
                         <span asp-validation-for="Password" class="text-danger small"></span>
                     </div>
 
-                    <div class="mb-3">                  
+                    <div class="mb-3">
                         <div class="progress" style="height:8px;">
                             <div id="passwordStrengthBar" class="progress-bar bg-secondary" role="progressbar" style="width:0%"></div>
-                        </div>                       
+                        </div>
                         <small class="text-muted">
                             Sử dụng hơn 12 ký tự bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt để bảo mật tốt nhất.
                         </small>
@@ -65,6 +66,20 @@
                             <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">👁</button>
                         </div>
                         <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+                    </div>
+
+                    <!-- NEW: Role selection -->
+                    <div class="mb-3">
+                        <label class="form-label d-block">Vai trò</label>
+                        <div class="form-check form-check-inline">
+                            <input asp-for="Role" class="form-check-input" type="radio" id="RoleCustomer" value="customer" />
+                            <label class="form-check-label" for="RoleCustomer">Người mua</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input asp-for="Role" class="form-check-input" type="radio" id="RoleVendor" value="vendor" />
+                            <label class="form-check-label" for="RoleVendor">Người bán</label>
+                        </div>
+                        <span asp-validation-for="Role" class="text-danger small"></span>
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-lg w-100">Create Account</button>
@@ -87,7 +102,7 @@
             const passwordInput = document.getElementById('Password');
             const confirmInput = document.getElementById('ConfirmPassword');
 
-            const bar = document.getElementById('passwordStrengthBar');        
+            const bar = document.getElementById('passwordStrengthBar');
 
             const togglePasswordBtn = document.getElementById('togglePassword');
             const toggleConfirmBtn = document.getElementById('toggleConfirmPassword');

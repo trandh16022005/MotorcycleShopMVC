@@ -16,6 +16,9 @@ else
     <table class="table table-bordered align-middle">
         <thead>
             <tr>
+                <th style="width:40px;">
+                    <input type="checkbox" id="selectAll" />
+                </th>
                 <th>Sản phẩm</th>
                 <th>Loại</th>
                 <th>Đơn giá</th>
@@ -33,19 +36,27 @@ else
                 total += lineTotal;
 
                 <tr>
-                    <td>
+                    <td class="align-middle text-center">
+                        <input type="checkbox"
+                               class="select-item"
+                               name="selectedItemIds"
+                               value="@item.CartItemId"
+                               checked />
+                    </td>
+
+                    <td class="align-middle">
                         @(item.Motorcycle?.ModelName ?? item.Part?.PartName)
                     </td>
 
-                    <td>
+                    <td class="align-middle">
                         @(item.Motorcycle != null ? "Motorcycle" : "Part")
                     </td>
 
-                    <td>
+                    <td class="align-middle">
                         @price.ToString("N0")
                     </td>
 
-                    <td>
+                    <td class="align-middle">
                         <div class="d-flex align-items-center gap-2">
 
                             <form asp-controller="Cart"
@@ -87,27 +98,27 @@ else
                         </div>
                     </td>
 
-                    <td>
+                    <td class="align-middle">
                         @lineTotal.ToString("N0")
                     </td>
 
-                    <td>
+                    <td class="align-middle">
 
                         @if (item.MotorcycleId != null)
                         {
                             <a asp-controller="Motorcycle"
-                                   asp-action="Details"
-                                   asp-route-id="@item.MotorcycleId"
-                                   class="btn btn-sm btn-info text-white">
+                               asp-action="Details"
+                               asp-route-id="@item.MotorcycleId"
+                               class="btn btn-sm btn-info text-white">
                                 Xem chi tiết
                             </a>
                         }
                         else if (item.PartId != null)
                         {
                             <a asp-controller="Part"
-                                   asp-action="Details"
-                                   asp-route-id="@item.PartId"
-                                   class="btn btn-sm btn-info text-white">
+                               asp-action="Details"
+                               asp-route-id="@item.PartId"
+                               class="btn btn-sm btn-info text-white">
                                 Xem chi tiết
                             </a>
                         }
@@ -157,12 +168,40 @@ else
                 </button>
             </form>
 
-            <a asp-controller="Order"
-                   asp-action="Checkout"
-                   class="btn btn-primary">
-                Thanh toán ngay
-            </a>
+            <button id="checkoutSelectedBtn"
+                    class="btn btn-primary">
+                Thanh toán
+            </button>
 
         </div>
     </div>
+}
+
+@section Scripts {
+    <script>
+        // Select all toggle
+        document.getElementById('selectAll')?.addEventListener('change', function (e) {
+            var checked = e.target.checked;
+            document.querySelectorAll('.select-item').forEach(function (cb) {
+                cb.checked = checked;
+            });
+        });
+
+        // Khi bấm nút Thanh toán, lấy các id đã chọn và chuyển đến /Order/Checkout?selectedItemIds=...
+        document.getElementById('checkoutSelectedBtn')?.addEventListener('click', function (e) {
+            e.preventDefault();
+            var selected = Array.from(document.querySelectorAll('.select-item:checked'))
+                                .map(function (cb) { return cb.value; });
+
+            if (!selected.length) {
+                alert('Vui lòng chọn ít nhất một mục để thanh toán.');
+                return;
+            }
+
+            // Tạo URL với query string nhiều giá trị
+            var params = selected.map(function (id) { return 'selectedItemIds=' + encodeURIComponent(id); }).join('&');
+            var url = '@Url.Action("Checkout", "Order")' + '?' + params;
+            window.location.href = url;
+        });
+    </script>
 }
