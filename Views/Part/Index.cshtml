@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "IndexParts";
+    // Đọc role từ Session ngay từ đầu để dùng chung cho toàn bộ trang
+    var currentRole = Context.Session.GetString("UserRole") ?? Context.Session.GetString("Role");
 }
 
 <div class="parts-page">
@@ -16,6 +18,15 @@
             </div>
         </div>
     </section>
+
+    @if (currentRole == "Vendor" || currentRole == "Admin")
+    {
+        <div class="mb-3">
+            <a asp-action="Create" class="btn btn-primary fw-bold">
+                <i class="bi bi-plus-circle"></i> Thêm phụ tùng mới
+            </a>
+        </div>
+    }
 
     <section class="mb-4">
         <div class="row g-2">
@@ -64,14 +75,12 @@
                                     View Details
                                 </a>
 
-                                @{
-                                    var role = Context.Session.GetString("UserRole");
-                                }
-
-                                @if (string.Equals(role, "Admin", StringComparison.OrdinalIgnoreCase))
+                                @if (currentRole == "Vendor" || currentRole == "Admin")
                                 {
-                                    <a asp-action="Edit" asp-route-id="@item.PartId" class="btn btn-outline-secondary btn-sm">Edit</a>
-                                    <a asp-action="Delete" asp-route-id="@item.PartId" class="btn btn-outline-danger btn-sm">Delete</a>
+                                    <div class="d-flex gap-2 my-2">
+                                        <a asp-action="Edit" asp-route-id="@item.PartId" class="btn btn-outline-secondary btn-sm flex-fill">Sửa</a>
+                                        <a asp-action="Delete" asp-route-id="@item.PartId" class="btn btn-outline-danger btn-sm flex-fill">Xóa</a>
+                                    </div>
                                 }
 
                                 <form asp-controller="Cart" asp-action="AddPart" method="post">
