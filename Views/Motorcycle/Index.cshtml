@@ -14,14 +14,14 @@
             </div>
             <div class="hero-badge">
                 @* Hiển thị tổng số item từ PaginatedList *@
-                <span class="badge bg-light text-dark fs-6 px-3 py-2">Total: @Model.Count() bikes</span>
+                <span class="badge bg-light text-dark fs-6 px-3 py-2">Total: @Model.TotalItemCount bikes</span>
             </div>
         </div>
     </section>
 
     @* Form Lọc và Tìm kiếm Server-side *@
     <section class="mb-4">
-        <form asp-action="Index" method="get" class="bg-light p-3 rounded-3 shadow-sm">
+		<form asp-action=" Index" method="get" class="bg-light p-3rounded-3 shadow-sm">
             <div class="row g-2 mb-3">
                 <div class="col-md-4">
                     <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Tìm theo tên xe..." />

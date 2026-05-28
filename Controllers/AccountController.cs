@@ -72,7 +72,8 @@ namespace MotorcycleShopMVC.Controllers
                 // Vendor/User -> Home
                 return RedirectToAction("Index", "Home");
             }
-            ViewBag.ReturnUrl = returnUrl; return View(new LoginViewModel());
+            ViewBag.ReturnUrl = returnUrl; 
+            return View(new LoginViewModel());
         }
 
         // POST: /Account/Login

@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -380,6 +380,38 @@
 
     @await RenderSectionAsync("Scripts", required: false)
 
+        @* WISHLIST TOAST *@
+        @if (TempData["WishlistMessage"] != null)
+        {
+            <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 2000;">
+                <div id="wishlistToast"
+                 class="toast align-items-center text-bg-warning border-0"
+                     role="alert"
+                     aria-live="assertive"
+                     aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            @TempData["WishlistMessage"]
+                        </div>
+                        <button type="button"
+                            class="btn-close me-2 m-auto"
+                                data-bs-dismiss="toast"
+                                aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    var el = document.getElementById("wishlistToast");
+                    if (!el) return;
+
+                    var toast = new bootstrap.Toast(el, { delay: 2000 });
+                    toast.show();
+                });
+            </script>
+        }
+
     <!-- CART COUNT -->
     @if (!isAdmin)
     {
@@ -416,5 +448,4 @@
 
 </body>
 </html>
-
 
