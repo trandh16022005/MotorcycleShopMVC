@@ -1,89 +1,216 @@
 ﻿@model MotorcycleShopMVC.Models.Part
 
 @{
-    ViewData["Title"] = "CreatePart";
+    ViewData["Title"] = "Create Part";
 }
 
-<h1>Create</h1>
+<div class="container mt-4">
 
-<h4>Part</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="card shadow border-0">
 
-            <div class="form-group">
-                <label asp-for="PartName" class="control-label"></label>
-                <input asp-for="PartName" class="form-control" />
-                <span asp-validation-for="PartName" class="text-danger"></span>
+        <div class="card-header bg-dark text-white">
+            <h3 class="mb-0">
+                🔧 Create New Part
+            </h3>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Create">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="alert alert-danger">
+                </div>
+
+                <div class="row">
+
+                    <!-- LEFT COLUMN -->
+
+                    <div class="col-md-6">
+
+                        <div class="mb-3">
+                            <label asp-for="PartName"
+                                   class="form-label fw-bold">
+                                Part Name
+                            </label>
+
+                            <input asp-for="PartName"
+                                   class="form-control" />
+
+                            <span asp-validation-for="PartName"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="CategoryId"
+                                   class="form-label fw-bold">
+                                Category
+                            </label>
+
+                            <select asp-for="CategoryId"
+                                    asp-items="ViewBag.CategoryId"
+                                    class="form-select">
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="BrandId"
+                                   class="form-label fw-bold">
+                                Brand
+                            </label>
+
+                            <select asp-for="BrandId"
+                                    asp-items="ViewBag.BrandId"
+                                    class="form-select">
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Price"
+                                   class="form-label fw-bold">
+                            </label>
+
+                            <input asp-for="Price"
+                                   class="form-control" />
+
+                            <span asp-validation-for="Price"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="StockQuantity"
+                                   class="form-label fw-bold">
+                            </label>
+
+                            <input asp-for="StockQuantity"
+                                   class="form-control" />
+
+                            <span asp-validation-for="StockQuantity"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT COLUMN -->
+
+                    <div class="col-md-6">
+
+                        <div class="mb-3">
+                            <label asp-for="WarrantyMonths"
+                                   class="form-label fw-bold">
+                            </label>
+
+                            <input asp-for="WarrantyMonths"
+                                   class="form-control" />
+
+                            <span asp-validation-for="WarrantyMonths"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label asp-for="ImagePath"
+                                   class="form-label fw-bold">
+                                Image URL
+                            </label>
+
+                            <input asp-for="ImagePath"
+                                   id="imageInput"
+                                   class="form-control"
+                                   placeholder="/images/parts/brake-pad.jpg" />
+
+                            <span asp-validation-for="ImagePath"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- IMAGE PREVIEW -->
+
+                        <div class="mb-3 text-center">
+
+                            <img id="previewImage"
+                                 src="https://via.placeholder.com/300x200?text=Part+Image"
+                                 class="img-fluid rounded border shadow-sm"
+                                 style="max-height:250px;" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- DESCRIPTION -->
+
+                <div class="mb-3">
+
+                    <label asp-for="Description"
+                           class="form-label fw-bold">
+                    </label>
+
+                    <textarea asp-for="Description"
+                              rows="5"
+                                  class="form-control">
+                    </textarea>
+
+                        <span asp-validation-for="Description"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                    <!-- BUTTONS -->
+
+                    <div class="d-flex justify-content-between">
+
+                        <a asp-action="Index"
+                               class="btn btn-outline-secondary">
+                            ← Back To List
+                        </a>
+
+                        <button type="submit"
+                                class="btn btn-success px-4">
+                            ✅ Create Part
+                        </button>
+
+                    </div>
+
+                </form>
+
             </div>
 
-            <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
-            </div>
+        </div>
 
-            <div class="form-group">
-                <label asp-for="BrandId" class="control-label"></label>
-                <select asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="StockQuantity" class="control-label"></label>
-                <input asp-for="StockQuantity" class="form-control" />
-                <span asp-validation-for="StockQuantity" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="ImagePath" class="control-label"></label>
-                <input asp-for="ImagePath" class="form-control" />
-                <span asp-validation-for="ImagePath" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="WarrantyMonths" class="control-label"></label>
-                <input asp-for="WarrantyMonths" class="form-control" />
-                <span asp-validation-for="WarrantyMonths" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="CreatedAt" class="control-label"></label>
-                <input asp-for="CreatedAt" class="form-control" />
-                <span asp-validation-for="CreatedAt" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="UpdatedAt" class="control-label"></label>
-                <input asp-for="UpdatedAt" class="form-control" />
-                <span asp-validation-for="UpdatedAt" class="text-danger"></span>
-            </div>
-
-            <div class="form-group mt-2">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
     </div>
-</div>
 
-<div class="mt-2">
-    <a asp-action="Index">Back to List</a>
-</div>
+    @section Scripts {
 
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+
+        <script>
+
+            const imageInput =
+                document.getElementById("imageInput");
+
+            const previewImage =
+                document.getElementById("previewImage");
+
+            imageInput.addEventListener("input", function () {
+
+                if (this.value.trim() !== "") {
+
+                    previewImage.src = this.value;
+
+                }
+
+            });
+
+        </script>
+
     }
-}
