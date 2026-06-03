@@ -108,6 +108,20 @@ namespace MotorcycleShopMVC.Controllers
                 return View(model);
             }
 
+            // Vendor chưa được Admin duyệt
+            if (string.Equals(user.Role, "Vendor",
+                    StringComparison.OrdinalIgnoreCase)
+                && !user.IsApproved)
+            {
+                ModelState.AddModelError(
+                    "",
+                    "Tài khoản người bán của bạn đang chờ Admin phê duyệt.");
+
+                ViewBag.ReturnUrl = returnUrl;
+
+                return View(model);
+            }
+
             // =========================
             // COOKIE AUTHENTICATION
             // =========================
@@ -147,7 +161,7 @@ namespace MotorcycleShopMVC.Controllers
                 });
 
             // =========================
-            // SESSION (GIỮ CODE CỦA BẠN)
+            // SESSION 
             // =========================
 
             HttpContext.Session.SetString("UserId", user.Id.ToString());
@@ -290,15 +304,22 @@ namespace MotorcycleShopMVC.Controllers
             {
                 FullName = model.FullName,
                 Email = model.Email,
+
                 PhoneNumber = string.IsNullOrWhiteSpace(model.PhoneNumber)
-                    ? null
-                    : model.PhoneNumber,
+        ? null
+        : model.PhoneNumber,
 
                 Address = string.IsNullOrWhiteSpace(model.Address)
-                    ? null
-                    : model.Address,
+        ? null
+        : model.Address,
 
                 Role = normalizedRole,
+
+                IsApproved =
+        normalizedRole.Equals(
+            "Customer",
+            StringComparison.OrdinalIgnoreCase),
+
                 CreatedAt = DateTime.Now,
                 UpdatedAt = DateTime.Now
             };
@@ -309,6 +330,14 @@ namespace MotorcycleShopMVC.Controllers
             _context.Users.Add(user);
 
             await _context.SaveChangesAsync();
+
+            if (normalizedRole == "vendor")
+            {
+                TempData["Success"] =
+                    "Tài khoản người bán đã được tạo và đang chờ Admin phê duyệt.";
+
+                return RedirectToAction(nameof(Login));
+            }
 
             // =========================
             // COOKIE AUTH

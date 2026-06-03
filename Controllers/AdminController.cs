@@ -186,6 +186,73 @@ namespace MotorcycleShopMVC.Controllers
         }
 
         // =========================
+        // APPROVE VENDOR
+        // =========================
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ApproveVendor(int id)
+        {
+            var user = await _context.Users.FindAsync(id);
+
+            if (user == null)
+                return NotFound();
+
+            // Chỉ duyệt Vendor
+            if (!string.Equals(user.Role, "Vendor",
+                StringComparison.OrdinalIgnoreCase))
+            {
+                TempData["Error"] =
+                    "Tài khoản này không phải Vendor.";
+
+                return RedirectToAction(nameof(Users));
+            }
+
+            user.IsApproved = true;
+            user.UpdatedAt = DateTime.Now;
+
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] =
+                $"Đã phê duyệt Vendor: {user.FullName}";
+
+            return RedirectToAction(nameof(Users));
+        }
+
+        // =========================
+        // REJECT VENDOR
+        // =========================
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RejectVendor(int id)
+        {
+            var user = await _context.Users.FindAsync(id);
+
+            if (user == null)
+                return NotFound();
+
+            // Chỉ xử lý Vendor
+            if (!string.Equals(user.Role, "Vendor",
+                StringComparison.OrdinalIgnoreCase))
+            {
+                TempData["Error"] =
+                    "Tài khoản này không phải Vendor.";
+
+                return RedirectToAction(nameof(Users));
+            }
+
+            _context.Users.Remove(user);
+
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] =
+                "Đã từ chối và xóa tài khoản Vendor.";
+
+            return RedirectToAction(nameof(Users));
+        }
+
+        // =========================
         // ORDERS
         // =========================
 

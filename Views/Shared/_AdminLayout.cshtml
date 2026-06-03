@@ -81,16 +81,9 @@
                     @ViewData["Title"]
                 </span>
 
-                <form asp-controller="Account"
-                      asp-action="Logout"
-                      method="post">
-
-                    @Html.AntiForgeryToken()
-
-                    <button class="btn btn-danger btn-sm">
-                        Logout
-                    </button>
-                </form>
+                <span class="text-muted">
+                    Administrator
+                </span>
             </nav>
 
             <!-- PAGE -->
