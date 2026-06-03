@@ -1,86 +1,303 @@
 @model MotorcycleShopMVC.Models.Motorcycle
 
 @{
-    ViewData["Title"] = "CreateMotorcycle";
+    ViewData["Title"] = "Create Motorcycle";
 }
 
-<h1>Create</h1>
+<div class="container mt-4">
 
-<h4>Motorcycle</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ModelName" class="control-label"></label>
-                <input asp-for="ModelName" class="form-control" />
-                <span asp-validation-for="ModelName" class="text-danger"></span>
+    <div class="card shadow border-0">
+
+        <div class="card-header bg-dark text-white">
+            <h3 class="mb-0">
+                🏍 Create New Motorcycle
+            </h3>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Create"
+                  method="post"
+                  enctype="multipart/form-data">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="alert alert-danger">
+                </div>
+
+                <div class="row">
+
+                    <!-- LEFT COLUMN -->
+                    <div class="col-md-6">
+
+                        <div class="mb-3">
+                            <label asp-for="ModelName"
+                                   class="form-label fw-bold">
+                                Model Name
+                            </label>
+
+                            <input asp-for="ModelName"
+                                   class="form-control" />
+
+                            <span asp-validation-for="ModelName"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="BrandId"
+                                   class="form-label fw-bold">
+                                Brand
+                            </label>
+
+                            <select asp-for="BrandId"
+                                    asp-items="ViewBag.BrandId"
+                                    class="form-select">
+                            </select>
+
+                            <span asp-validation-for="BrandId"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="TypeId"
+                                   class="form-label fw-bold">
+                                Vehicle Type
+                            </label>
+
+                            <select asp-for="TypeId"
+                                    asp-items="ViewBag.TypeId"
+                                    class="form-select">
+                            </select>
+
+                            <span asp-validation-for="TypeId"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="EngineCapacity"
+                                   class="form-label fw-bold">
+                                Engine Capacity (cc)
+                            </label>
+
+                            <input asp-for="EngineCapacity"
+                                   class="form-control" />
+
+                            <span asp-validation-for="EngineCapacity"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="YearFrom"
+                                       class="form-label fw-bold">
+                                    Year From
+                                </label>
+
+                                <input asp-for="YearFrom"
+                                       class="form-control" />
+
+                                <span asp-validation-for="YearFrom"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="YearTo"
+                                       class="form-label fw-bold">
+                                    Year To
+                                </label>
+
+                                <input asp-for="YearTo"
+                                       class="form-control" />
+
+                                <span asp-validation-for="YearTo"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label asp-for="Price"
+                                   class="form-label fw-bold">
+                                Price
+                            </label>
+
+                            <input asp-for="Price"
+                                   class="form-control" />
+
+                            <span asp-validation-for="Price"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT COLUMN -->
+                    <div class="col-md-6">
+
+                        <div class="mb-3">
+
+                            <label asp-for="Color"
+                                   class="form-label fw-bold">
+                                Color
+                            </label>
+
+                            <input asp-for="Color"
+                                   class="form-control" />
+
+                            <span asp-validation-for="Color"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label asp-for="WarrantyPolicy"
+                                   class="form-label fw-bold">
+                                Warranty Policy
+                            </label>
+
+                            <input asp-for="WarrantyPolicy"
+                                   class="form-control" />
+
+                            <span asp-validation-for="WarrantyPolicy"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- IMAGE UPLOAD -->
+
+                        <div class="mb-3">
+
+                            <label class="form-label fw-bold">
+                                Motorcycle Image
+                            </label>
+
+                            <input type="file"
+                                   name="imageFile"
+                                   id="imageFile"
+                                   class="form-control"
+                                   accept="image/*" />
+
+                        </div>
+
+                        <!-- IMAGE PREVIEW -->
+
+                        <div class="mb-3 text-center">
+
+                            <img id="previewImage"
+                                 src="https://via.placeholder.com/500x300?text=Preview+Image"
+                                 class="img-fluid rounded border shadow-sm"
+                                 style="max-height:250px;" />
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label asp-for="StockQty"
+                                   class="form-label fw-bold">
+                                Stock Quantity
+                            </label>
+
+                            <input asp-for="StockQty"
+                                   class="form-control" />
+
+                            <span asp-validation-for="StockQty"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- DESCRIPTION -->
+
+                <div class="mb-3">
+
+                    <label asp-for="Description"
+                           class="form-label fw-bold">
+                        Description
+                    </label>
+
+                    <textarea asp-for="Description"
+                              rows="5"
+                                  class="form-control">
+                    </textarea>
+
+                        <span asp-validation-for="Description"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                    <!-- BUTTONS -->
+
+                    <div class="d-flex justify-content-between">
+
+                        <a asp-action="Index"
+                               class="btn btn-outline-secondary">
+                            ← Back To List
+                        </a>
+
+                        <button type="submit"
+                                class="btn btn-success px-4">
+                            ✅ Create Motorcycle
+                        </button>
+
+                    </div>
+
+                </form>
+
             </div>
-            <div class="form-group">
-                <label asp-for="BrandId" class="control-label"></label>
-                <select asp-for="BrandId" class ="form-control" asp-items="ViewBag.BrandId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="TypeId" class="control-label"></label>
-                <select asp-for="TypeId" class ="form-control" asp-items="ViewBag.TypeId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="EngineCapacity" class="control-label"></label>
-                <input asp-for="EngineCapacity" class="form-control" />
-                <span asp-validation-for="EngineCapacity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="YearFrom" class="control-label"></label>
-                <input asp-for="YearFrom" class="form-control" />
-                <span asp-validation-for="YearFrom" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="YearTo" class="control-label"></label>
-                <input asp-for="YearTo" class="form-control" />
-                <span asp-validation-for="YearTo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Color" class="control-label"></label>
-                <input asp-for="Color" class="form-control" />
-                <span asp-validation-for="Color" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="WarrantyPolicy" class="control-label"></label>
-                <input asp-for="WarrantyPolicy" class="form-control" />
-                <span asp-validation-for="WarrantyPolicy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImagePath" class="control-label"></label>
-                <input asp-for="ImagePath" class="form-control" />
-                <span asp-validation-for="ImagePath" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StockQty" class="control-label"></label>
-                <input asp-for="StockQty" class="form-control" />
-                <span asp-validation-for="StockQty" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+
+        </div>
+
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    @section Scripts {
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+
+        <script>
+
+            document
+                .getElementById("imageFile")
+                .addEventListener("change", function (e)
+            {
+                const file = e.target.files[0];
+
+                if (!file)
+                    return;
+
+                const reader = new FileReader();
+
+                reader.onload = function (event)
+                {
+                    document
+                        .getElementById("previewImage")
+                        .src = event.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            });
+
+        </script>
+
+    }

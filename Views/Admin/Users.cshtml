@@ -48,7 +48,8 @@
                             <th>Email</th>
                             <th>Role</th>
                             <th>Status</th>
-                            <th width="420">Actions</th>
+                            <th>Approval</th>
+                            <th width="600">Actions</th>
                         </tr>
 
                     </thead>
@@ -77,13 +78,13 @@
                                 <!-- ROLE -->
                                 <td>
 
-                                    @if (user.Role == "Admin")
+                                    @if (string.Equals(user.Role, "Admin", StringComparison.OrdinalIgnoreCase))
                                     {
                                         <span class="badge bg-danger">
                                             Admin
                                         </span>
                                     }
-                                    else if (user.Role == "Vendor")
+                                    else if (string.Equals(user.Role, "Vendor", StringComparison.OrdinalIgnoreCase))
                                     {
                                         <span class="badge bg-warning text-dark">
                                             Vendor
@@ -116,10 +117,81 @@
 
                                 </td>
 
+                                <!-- APPROVAL -->
+                                <td>
+
+                                    @if (string.Equals(user.Role, "Vendor", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        if (user.IsApproved)
+                                        {
+                                            <span class="badge bg-success">
+                                                Approved
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-warning text-dark">
+                                                Pending
+                                            </span>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">
+                                            N/A
+                                        </span>
+                                    }
+
+                                </td>
+
                                 <!-- ACTIONS -->
                                 <td>
 
                                     <div class="d-flex flex-wrap gap-2">
+
+                                        <!-- APPROVE / REJECT VENDOR -->
+                                        @if (string.Equals(user.Role, "Vendor", StringComparison.OrdinalIgnoreCase)
+                                                                           && !user.IsApproved)
+                                        {
+                                            <form asp-controller="Admin"
+                                                  asp-action="ApproveVendor"
+                                                  method="post">
+
+                                                @Html.AntiForgeryToken()
+
+                                                <input type="hidden"
+                                                       name="id"
+                                                       value="@user.Id" />
+
+                                                <button type="submit"
+                                                        class="btn btn-success btn-sm">
+
+                                                    Approve
+
+                                                </button>
+
+                                            </form>
+
+                                            <form asp-controller="Admin"
+                                                  asp-action="RejectVendor"
+                                                  method="post">
+
+                                                @Html.AntiForgeryToken()
+
+                                                <input type="hidden"
+                                                       name="id"
+                                                       value="@user.Id" />
+
+                                                <button type="submit"
+                                                        class="btn btn-danger btn-sm"
+                                                        onclick="return confirm('Reject và xóa tài khoản Vendor này?')">
+
+                                                    Reject
+
+                                                </button>
+
+                                            </form>
+                                        }
 
                                         <!-- LOCK / UNLOCK -->
                                         @if (user.IsActive)
@@ -182,17 +254,17 @@
                                                     class="form-select form-select-sm me-2">
 
                                                 <option value="Customer"
-                                                        selected="@(user.Role == "Customer")">
+                                                        selected="@(string.Equals(user.Role, "Customer", StringComparison.OrdinalIgnoreCase))">
                                                     Customer
                                                 </option>
 
                                                 <option value="Vendor"
-                                                        selected="@(user.Role == "Vendor")">
+                                                        selected="@(string.Equals(user.Role, "Vendor", StringComparison.OrdinalIgnoreCase))">
                                                     Vendor
                                                 </option>
 
                                                 <option value="Admin"
-                                                        selected="@(user.Role == "Admin")">
+                                                        selected="@(string.Equals(user.Role, "Admin", StringComparison.OrdinalIgnoreCase))">
                                                     Admin
                                                 </option>
 
