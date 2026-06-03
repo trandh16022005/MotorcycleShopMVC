@@ -283,6 +283,34 @@ namespace MotorcycleShopMVC.Controllers
                 }
             }
 
+            if (string.IsNullOrWhiteSpace(model.Gender))
+            {
+                ModelState.AddModelError("Gender", "Vui lòng chọn giới tính");
+                ViewBag.ReturnUrl = returnUrl;
+                return View(model);
+            }
+
+            if (!model.BirthDay.HasValue)
+            {
+                ModelState.AddModelError("BirthDay", "Vui lòng nhập ngày sinh");
+                ViewBag.ReturnUrl = returnUrl;
+                return View(model);
+            }
+
+            if (!model.BirthMonth.HasValue)
+            {
+                ModelState.AddModelError("BirthMonth", "Vui lòng nhập tháng sinh");
+                ViewBag.ReturnUrl = returnUrl;
+                return View(model);
+            }
+
+            if (!model.BirthYear.HasValue)
+            {
+                ModelState.AddModelError("BirthYear", "Vui lòng nhập năm sinh");
+                ViewBag.ReturnUrl = returnUrl;
+                return View(model);
+            }
+
             // =========================
             // CREATE USER
             // =========================
@@ -298,6 +326,14 @@ namespace MotorcycleShopMVC.Controllers
                 Address = string.IsNullOrWhiteSpace(model.Address)
                     ? null
                     : model.Address,
+
+                Gender = string.IsNullOrWhiteSpace(model.Gender)
+                    ? null
+                    : model.Gender,
+
+                BirthDay = model.BirthDay,
+                BirthMonth = model.BirthMonth,
+                BirthYear = model.BirthYear,
 
                 Role = normalizedRole,
                 CreatedAt = DateTime.Now,

@@ -62,10 +62,13 @@ namespace MotorcycleShopMVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [RoleAuthorize("Vendor", "Admin")]
-        public async Task<IActionResult> Create([Bind("PartId,PartName,CategoryId,BrandId,Price,StockQuantity,Description,ImagePath,WarrantyMonths,CreatedAt,UpdatedAt")] Part part)
+        public async Task<IActionResult> Create(Part part)
         {
             if (ModelState.IsValid)
             {
+                part.CreatedAt = DateTime.Now;
+                part.UpdatedAt = DateTime.Now;
+
                 _context.Add(part);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

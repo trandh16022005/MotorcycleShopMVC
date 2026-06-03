@@ -97,7 +97,7 @@
                                     var role = Context.Session.GetString("UserRole");
                                 }
 
-                                @if (role == "Vendor")
+                                @if (role == "vendor")
                                 {
                                     <div class="d-flex gap-2">
                                         <a asp-action="Edit" asp-route-id="@item.MotorcycleId" class="btn btn-outline-secondary btn-sm flex-grow-1">Sửa</a>
