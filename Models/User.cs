@@ -48,6 +48,9 @@ public class User
     [Column("is_active")]
     public bool IsActive { get; set; } = true;
 
+    [Column("is_approved")]
+    public bool IsApproved { get; set; } = true;
+
     [Column("created_at", TypeName = "datetime")]
     public DateTime? CreatedAt { get; set; }
 
