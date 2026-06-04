@@ -3,32 +3,252 @@
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     ViewData["Title"] = "Manage Orders";
+var totalOrders = Model.Count();
+    var pendingOrders = Model.Count(o => o.Status == "pending");
+    var completedOrders = Model.Count(o => o.Status == "completed");
+    var totalRevenue = Model
+        .Where(o => o.Status == "completed")
+        .Sum(o => o.TotalAmount);
+
 }
 
-<table class="table table-bordered">
+<div class="container-fluid">
 
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>User</th>
-            <th>Total</th>
-            <th>Status</th>
-        </tr>
-    </thead>
+    <!-- PAGE HEADER -->
 
-    <tbody>
+    <div class="mb-4">
 
-        @foreach (var order in Model)
-        {
-            <tr>
-                <td>@order.OrderId</td>
-                <td>@order.User?.Email</td>
-                <td>@order.TotalAmount</td>
-                <td>@order.Status</td>
-            </tr>
-        }
+        <h2 class="fw-bold mb-1">
+            📦 Order Management
+        </h2>
 
-    </tbody>
+        <p class="text-muted">
+            Monitor and manage customer orders across the system.
+        </p>
 
-</table>
+    </div>
 
+    <!-- STATISTICS -->
+
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-4">
+
+            <div class="card border-0 shadow-sm h-100">
+
+                <div class="card-body">
+
+                    <h6 class="text-muted">
+                        Total Orders
+                    </h6>
+
+                    <h2 class="fw-bold text-primary mb-0">
+                        @totalOrders
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card border-0 shadow-sm h-100">
+
+                <div class="card-body">
+
+                    <h6 class="text-muted">
+                        Pending Orders
+                    </h6>
+
+                    <h2 class="fw-bold text-warning mb-0">
+                        @pendingOrders
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card border-0 shadow-sm h-100">
+
+                <div class="card-body">
+
+                    <h6 class="text-muted">
+                        Revenue (Completed)
+                    </h6>
+
+                    <h2 class="fw-bold text-success mb-0">
+                        @totalRevenue.ToString("N0") VNĐ
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ORDER TABLE -->
+
+    <div class="card border-0 shadow">
+
+        <div class="card-header bg-dark text-white">
+
+            <h5 class="mb-0">
+                Order List
+            </h5>
+
+        </div>
+
+        <div class="card-body p-0">
+
+            @if (Model.Any())
+            {
+                <div class="table-responsive">
+
+                    <table class="table table-hover align-middle mb-0">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th width="100">Order ID</th>
+                                <th>Customer</th>
+                                <th width="180">Total Amount</th>
+                                <th width="150">Status</th>
+                                <th width="150">Payment</th>
+                                <th width="180">Date</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (var order in Model)
+                            {
+                                <tr>
+
+                                    <td>
+                                        <span class="badge bg-dark fs-6">
+                                            #@order.OrderId
+                                        </span>
+                                    </td>
+
+                                    <td>
+
+                                        <div class="fw-semibold">
+                                            @(order.User?.FullName ?? "Unknown User")
+                                        </div>
+
+                                        <small class="text-muted">
+                                            @order.User?.Email
+                                        </small>
+
+                                    </td>
+
+                                    <td class="fw-bold text-danger">
+                                        @order.TotalAmount.ToString("N0") VNĐ
+                                    </td>
+
+                                    <td>
+
+                                        @if (order.Status == "pending")
+                                        {
+                                            <span class="badge bg-warning text-dark">
+                                                Pending
+                                            </span>
+                                        }
+                                        else if (order.Status == "processing")
+                                        {
+                                            <span class="badge bg-info">
+                                                Processing
+                                            </span>
+                                        }
+                                        else if (order.Status == "completed")
+                                        {
+                                            <span class="badge bg-success">
+                                                Completed
+                                            </span>
+                                        }
+                                        else if (order.Status == "cancelled")
+                                        {
+                                            <span class="badge bg-danger">
+                                                Cancelled
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">
+                                                @order.Status
+                                            </span>
+                                        }
+
+                                    </td>
+
+                                    <td>
+
+                                        @if (order.PaymentStatus == "Paid")
+                                        {
+                                            <span class="badge bg-success">
+                                                Paid
+                                            </span>
+                                        }
+                                        else if (order.PaymentStatus == "Pending")
+                                        {
+                                            <span class="badge bg-warning text-dark">
+                                                Pending
+                                            </span>
+                                        }
+                                        else if (order.PaymentStatus == "Failed")
+                                        {
+                                            <span class="badge bg-danger">
+                                                Failed
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">
+                                                @order.PaymentStatus
+                                            </span>
+                                        }
+
+                                    </td>
+
+                                    <td>
+                                        @order.OrderDate?.ToString("dd/MM/yyyy HH:mm")
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            }
+            else
+            {
+                <div class="text-center py-5">
+
+                    <h5 class="text-muted">
+                        No orders found
+                    </h5>
+
+                    <p class="text-secondary mb-0">
+                        Orders will appear here once customers place them.
+                    </p>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</div>

@@ -20,7 +20,7 @@
         </div>
     </section>
 
-    @if (currentRole == "vendor")
+    @if (currentRole == "Vendor")
     {
         <div class="mb-3">
             <a asp-action="Create" class="btn btn-primary fw-bold">
@@ -76,7 +76,7 @@
                                     View Details
                                 </a>
 
-                                @if (currentRole == "vendor")
+                                @if (currentRole == "Vendor")
                                 {
                                     <div class="d-flex gap-2 my-2">
                                         <a asp-action="Edit" asp-route-id="@item.PartId" class="btn btn-outline-secondary btn-sm flex-fill">Sửa</a>
