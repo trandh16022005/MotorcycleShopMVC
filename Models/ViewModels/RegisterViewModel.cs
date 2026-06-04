@@ -22,6 +22,7 @@ namespace MotorcycleShopMVC.Models.ViewModels
         [Display(Name = "Địa chỉ")]
         public string? Address { get; set; }
 
+
         [Required(ErrorMessage = "Vui lòng nhập mật khẩu")]
         [MinLength(6, ErrorMessage = "Mật khẩu tối thiểu 6 ký tự")]
         [DataType(DataType.Password)]
@@ -37,5 +38,20 @@ namespace MotorcycleShopMVC.Models.ViewModels
         [Required(ErrorMessage = "Vui lòng chọn vai trò.")]
         [RegularExpression("^(customer|vendor)$", ErrorMessage = "Vai trò không hợp lệ.")]
         public string Role { get; set; } = "customer";
+
+        [Required(ErrorMessage = "Vui lòng chọn giới tính")]
+        public string Gender { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Vui lòng chọn ngày sinh")]
+        [Range(1, 31, ErrorMessage = "Ngày không hợp lệ")]
+        public int? BirthDay { get; set; }
+
+        [Required(ErrorMessage = "Vui lòng chọn tháng sinh")]
+        [Range(1, 12, ErrorMessage = "Tháng không hợp lệ")]
+        public int? BirthMonth { get; set; }
+
+        [Required(ErrorMessage = "Vui lòng chọn năm sinh")]
+        [Range(1900, 2100, ErrorMessage = "Năm không hợp lệ")]
+        public int? BirthYear { get; set; }
     }
 }

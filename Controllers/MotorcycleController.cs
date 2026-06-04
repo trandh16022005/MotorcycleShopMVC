@@ -113,6 +113,7 @@ namespace MotorcycleShopMVC.Controllers
         }
 
         [RoleAuthorize("Vendor", "Admin")]
+        [HttpGet]
         public IActionResult Create()
         {
             ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName");
@@ -173,6 +174,7 @@ namespace MotorcycleShopMVC.Controllers
         }
 
         [RoleAuthorize("Vendor", "Admin")]
+        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -205,6 +207,7 @@ namespace MotorcycleShopMVC.Controllers
         }
 
         [RoleAuthorize("Vendor", "Admin")]
+        [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();

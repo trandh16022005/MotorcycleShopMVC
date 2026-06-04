@@ -104,19 +104,7 @@ using (var scope = app.Services.CreateScope())
 
     var hasher = new PasswordHasher<User>();
 
-    //var vendor = context.Users
-    //.FirstOrDefault(u => u.Email == "trandh16022005@gmail.com");
-
-    //if (vendor != null)
-    //{
-    //    vendor.PasswordHash =
-    //        hasher.HashPassword(vendor, "123456");
-
-    //    context.SaveChanges();
-    //}
-
-
-    var adminEmail = "admin@gmail.com";
+    var adminEmail = "vi@gmail.com";
 
     var user = context.Users.FirstOrDefault(u => u.Email == adminEmail);
 
@@ -124,7 +112,7 @@ using (var scope = app.Services.CreateScope())
     {
         user = new User
         {
-            FullName = "Admin System",
+            FullName = "Admin Chi Vi",
             Email = adminEmail,
             PhoneNumber = "0900000000",
             Address = "Hà Nội",
@@ -133,18 +121,12 @@ using (var scope = app.Services.CreateScope())
             UpdatedAt = DateTime.Now
         };
 
-        user.PasswordHash = hasher.HashPassword(user, "123456");
+        user.PasswordHash = hasher.HashPassword(user, "chivi06");
 
         context.Users.Add(user);
+        context.SaveChanges();
     }
-    else
-    {
-        user.PasswordHash = hasher.HashPassword(user, "123456");
-        user.Role = "Admin";
-        user.UpdatedAt = DateTime.Now;
-    }
-
-    context.SaveChanges();
+    
 }
 
 
