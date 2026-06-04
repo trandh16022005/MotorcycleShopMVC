@@ -42,8 +42,20 @@
                                 </select>
 
                                 <select name="paymentStatus" class="form-select form-select-sm">
-                                    <option value="unpaid" selected="@(item.PaymentStatus == "unpaid")">Chưa TT</option>
-                                    <option value="paid" selected="@(item.PaymentStatus == "paid")">Đã TT</option>
+                                    <option value="Pending"
+                                            selected="@(item.PaymentStatus == "Pending")">
+                                        Chưa TT
+                                    </option>
+
+                                    <option value="Paid"
+                                            selected="@(item.PaymentStatus == "Paid")">
+                                        Đã TT
+                                    </option>
+
+                                    <option value="Failed"
+                                            selected="@(item.PaymentStatus == "Failed")">
+                                        Thanh toán lỗi
+                                    </option>
                                 </select>
 
                                 <button type="submit" class="btn btn-sm btn-primary">Lưu</button>
